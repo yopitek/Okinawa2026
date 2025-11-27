@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,7 +9,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -31,14 +34,14 @@
 
             /* Gradients */
             --gradient-hero: linear-gradient(135deg, #1b2735 0%, #2e4057 50%, #3d5a73 100%);
-            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.95) 0%, rgba(248,246,240,0.9) 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 246, 240, 0.9) 100%);
             --gradient-accent: linear-gradient(90deg, #d64545 0%, #e67e22 100%);
 
             /* Shadows */
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.06);
-            --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
-            --shadow-lg: 0 8px 32px rgba(0,0,0,0.12);
-            --shadow-xl: 0 16px 48px rgba(0,0,0,0.15);
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
 
             /* Typography */
             --font-display: 'Noto Serif TC', 'Crimson Text', serif;
@@ -76,8 +79,8 @@
             width: 100%;
             height: 100%;
             background-image:
-                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px),
-                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,0.01) 2px, rgba(0,0,0,0.01) 4px);
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px);
             opacity: 0.4;
             pointer-events: none;
             z-index: 1;
@@ -122,8 +125,15 @@
         }
 
         @keyframes heroGlow {
-            0% { opacity: 0.3; transform: scale(1); }
-            100% { opacity: 0.6; transform: scale(1.1); }
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
         }
 
         .hero-content {
@@ -139,7 +149,7 @@
             font-weight: 900;
             letter-spacing: -0.02em;
             margin-bottom: 16px;
-            text-shadow: 0 4px 12px rgba(0,0,0,0.3);
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
             animation: fadeInUp 0.8s ease-out;
         }
 
@@ -167,10 +177,10 @@
             align-items: center;
             gap: 8px;
             padding: 12px 24px;
-            background: rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.2);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
 
         .hero-meta-item i {
@@ -183,6 +193,7 @@
                 opacity: 0;
                 transform: translateY(30px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -344,8 +355,13 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
 
         /* ========== Day Section ========== */
@@ -409,17 +425,32 @@
             animation: spotAppear 0.5s ease-out backwards;
         }
 
-        .spot:nth-child(1) { animation-delay: 0.1s; }
-        .spot:nth-child(2) { animation-delay: 0.15s; }
-        .spot:nth-child(3) { animation-delay: 0.2s; }
-        .spot:nth-child(4) { animation-delay: 0.25s; }
-        .spot:nth-child(5) { animation-delay: 0.3s; }
+        .spot:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .spot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .spot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .spot:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .spot:nth-child(5) {
+            animation-delay: 0.3s;
+        }
 
         @keyframes spotAppear {
             from {
                 opacity: 0;
                 transform: translateX(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -687,7 +718,7 @@
             position: relative;
             color: var(--ink-black);
             line-height: 1.6;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
         .tip-list li:last-child {
@@ -760,6 +791,7 @@
                 transform: translateX(400px);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -821,6 +853,7 @@
 
         /* ========== Print Styles ========== */
         @media print {
+
             .nav-wrapper,
             .btn,
             .toast,
@@ -841,6 +874,7 @@
         }
     </style>
 </head>
+
 <body>
 
     <!-- Hero Section -->
@@ -906,9 +940,12 @@
                         <div class="tip-icon">🍽️</div>
                         <h3 class="tip-title">餐廳預約建議</h3>
                         <ul class="tip-list">
-                            <li><i class="fas fa-circle-check" style="color: #10b981;"></i><strong>燒肉本部牧場：</strong>建議事先電話預約（熱門餐廳）</li>
-                            <li><i class="fas fa-circle-check" style="color: #10b981;"></i><strong>七輪燒肉安安：</strong>假日建議提早到場或預約</li>
-                            <li><i class="fas fa-circle-check" style="color: #10b981;"></i><strong>Gangala之谷：</strong>需事先官網預約導覽行程</li>
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>燒肉本部牧場：</strong>建議事先電話預約（熱門餐廳）</li>
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>七輪燒肉安安：</strong>假日建議提早到場或預約</li>
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>Gangala之谷：</strong>需事先官網預約導覽行程</li>
                         </ul>
                     </div>
 
@@ -916,10 +953,14 @@
                         <div class="tip-icon">🚗</div>
                         <h3 class="tip-title">開車注意事項</h3>
                         <ul class="tip-list">
-                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>租車時確認兒童安全座椅（10歲、8歲各一）</li>
-                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>沖繩高速公路需付費，建議租用ETC卡</li>
-                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>加油站較少，建議油量低於半箱即加油</li>
-                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i><strong>日本靠左行駛</strong>，與台灣相反需注意</li>
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>租車時確認兒童安全座椅（10歲、8歲各一）
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>沖繩高速公路需付費，建議租用ETC卡
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>加油站較少，建議油量低於半箱即加油
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation"
+                                    style="color: #d64545;"></i><strong>日本靠左行駛</strong>，與台灣相反需注意</li>
                         </ul>
                     </div>
 
@@ -927,9 +968,12 @@
                         <div class="tip-icon">🎫</div>
                         <h3 class="tip-title">門票優惠資訊</h3>
                         <ul class="tip-list">
-                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>美麗海水族館：</strong>建議線上預購門票享優惠</li>
-                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>沖繩世界文化王國：</strong>套票含玉泉洞+王國村較划算</li>
-                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>Round 1：</strong>會員制，現場辦理即可</li>
+                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>美麗海水族館：</strong>建議線上預購門票享優惠
+                            </li>
+                            <li><i class="fas fa-tag"
+                                    style="color: #d4af37;"></i><strong>沖繩世界文化王國：</strong>套票含玉泉洞+王國村較划算</li>
+                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>Round 1：</strong>會員制，現場辦理即可
+                            </li>
                         </ul>
                     </div>
 
@@ -937,7 +981,8 @@
                         <div class="tip-icon">🌤️</div>
                         <h3 class="tip-title">天氣與穿著</h3>
                         <ul class="tip-list">
-                            <li><i class="fas fa-temperature-low" style="color: #87b5d5;"></i>1-2月為沖繩冬季，氣溫約 <strong>15-20°C</strong></li>
+                            <li><i class="fas fa-temperature-low" style="color: #87b5d5;"></i>1-2月為沖繩冬季，氣溫約
+                                <strong>15-20°C</strong></li>
                             <li><i class="fas fa-shirt" style="color: #3d3d3d;"></i>早晚溫差大，需攜帶薄外套</li>
                             <li><i class="fas fa-wind" style="color: #3d3d3d;"></i>海邊風大，建議帶防風外套</li>
                             <li><i class="fas fa-umbrella" style="color: #87b5d5;"></i>下雨機率較高，建議備雨具和室內備案</li>
@@ -1641,7 +1686,7 @@
         }
 
         function openMap(address, title) {
-            // Use address for Google Maps search (more reliable than MapCode)
+            // Use address for Google Maps search (more reliable than mapcode)
             const query = encodeURIComponent(`${address} ${title}`);
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
         }
@@ -1675,4 +1720,5 @@
         });
     </script>
 </body>
+
 </html>
