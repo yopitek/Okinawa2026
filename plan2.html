@@ -1586,7 +1586,7 @@
                                     <i class="fas fa-copy"></i>
                                     複製
                                 </button>
-                                <button class="btn btn-map" onclick="openMap('${spot.mapcode}', '${escapeQuotes(spot.title)}')">
+                                <button class="btn btn-map" onclick="openMap('${escapeQuotes(spot.address)}', '${escapeQuotes(spot.title)}')">
                                     <i class="fas fa-map-marked-alt"></i>
                                     開啟地圖
                                 </button>
@@ -1640,8 +1640,9 @@
             });
         }
 
-        function openMap(mapcode, title) {
-            const query = encodeURIComponent(`${mapcode} ${title}`);
+        function openMap(address, title) {
+            // Use address for Google Maps search (more reliable than MapCode)
+            const query = encodeURIComponent(`${address} ${title}`);
             window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
         }
 
