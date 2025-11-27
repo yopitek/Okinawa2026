@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沖繩旅遊行程 2026｜6天5夜完整規劃</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* 自定義樣式 */
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
+
+        * {
+            font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+
+        /* 深色模式變數 */
+        :root {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-card: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --accent: #3b82f6;
+        }
+
+        .dark {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --border-color: #334155;
+            --accent: #60a5fa;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* 平滑滾動 */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* 卡片樣式 */
+        .spot-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            transition: all 0.3s ease;
+        }
+
+        .spot-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px -10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* 按鈕動畫 */
+        .btn-hover:hover {
+            transform: scale(1.05);
+        }
+
+        .btn-hover:active {
+            transform: scale(0.98);
+        }
+
+        /* 淡入動畫 */
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 標籤樣式 */
+        .tab-button {
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            color: var(--accent);
+        }
+
+        .tab-button.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+            border-radius: 3px 3px 0 0;
+        }
+
+        /* 提示框樣式 */
+        .info-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        /* 圖片懶加載 */
+        img[loading="lazy"] {
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        img[loading="lazy"].loaded {
+            opacity: 1;
+        }
+
+        /* 列印樣式 */
+        @media print {
+            .no-print {
+                display: none !important;
+            }
+
+            .spot-card {
+                page-break-inside: avoid;
+            }
+
+            body {
+                background: white;
+                color: black;
+            }
+        }
+
+        /* 響應式水平滾動 */
+        .horizontal-scroll {
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-track {
+            background: var(--bg-secondary);
+        }
+
+        .horizontal-scroll::-webkit-scrollbar-thumb {
+            background: var(--border-color);
+            border-radius: 3px;
+        }
+
+        /* 複製成功提示 */
+        .copy-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- 頁面標題與控制列 -->
+    <header class="sticky top-0 z-50 backdrop-blur-lg bg-white/80 dark:bg-slate-900/80 border-b border-slate-200 dark:border-slate-700 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <div class="flex items-center justify-between">
+                <div>
+                    <h1 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-slate-50">
+                        <i class="fas fa-plane-departure text-blue-500 mr-2"></i>
+                        沖繩旅遊行程
+                    </h1>
+                    <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">2026年1月28日 - 2月2日｜6天5夜</p>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <!-- 列印按鈕 -->
+                    <button onclick="window.print()" class="btn-hover px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        <i class="fas fa-print mr-2"></i>
+                        <span class="hidden sm:inline">列印</span>
+                    </button>
+
+                    <!-- 深色模式切換 -->
+                    <button id="theme-toggle" class="btn-hover px-4 py-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all">
+                        <i class="fas fa-moon dark:hidden"></i>
+                        <i class="fas fa-sun hidden dark:inline"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 住宿資訊 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 no-print">
+        <div class="grid sm:grid-cols-2 gap-4">
+            <div class="spot-card rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fas fa-hotel text-2xl text-emerald-500"></i>
+                    <div>
+                        <h3 class="font-semibold text-lg">Vessel Hotel Campana Okinawa</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">1/28 - 1/31｜含早餐</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="spot-card rounded-xl p-5">
+                <div class="flex items-center gap-3 mb-2">
+                    <i class="fas fa-hot-tub text-2xl text-blue-500"></i>
+                    <div>
+                        <h3 class="font-semibold text-lg">Okinawa Hinode Resort and Hot Spring Hotel</h3>
+                        <p class="text-sm text-slate-600 dark:text-slate-400">1/31 - 2/2｜無早餐 · 含溫泉</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 日期分頁導覽 -->
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 no-print">
+        <div class="horizontal-scroll flex gap-2 pb-2" id="day-tabs">
+            <!-- 由 JavaScript 動態生成 -->
+        </div>
+    </nav>
+
+    <!-- 行程內容區 -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div id="schedule-content">
+            <!-- 由 JavaScript 動態生成 -->
+        </div>
+    </main>
+
+    <!-- 行程重點提醒 -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+            <i class="fas fa-lightbulb text-yellow-500"></i>
+            行程重點提醒
+        </h2>
+
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- 餐廳預約 -->
+            <div class="spot-card rounded-xl p-6">
+                <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <i class="fas fa-utensils text-orange-500"></i>
+                    餐廳預約建議
+                </h3>
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <span><strong>燒肉本部牧場：</strong>建議事先電話預約（熱門餐廳）</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <span><strong>七輪燒肉安安：</strong>假日建議提早到場或預約</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-check-circle text-green-500 mt-1"></i>
+                        <span><strong>Gangala之谷：</strong>需事先官網預約導覽行程</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 開車注意 -->
+            <div class="spot-card rounded-xl p-6">
+                <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <i class="fas fa-car text-blue-500"></i>
+                    開車注意事項
+                </h3>
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                        <span>租車時確認兒童安全座椅（10歲、8歲各一）</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                        <span>沖繩高速公路需付費，建議租用ETC卡</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                        <span>加油站較少，建議油量低於半箱即加油</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-exclamation-circle text-red-500 mt-1"></i>
+                        <span><strong>日本靠左行駛</strong>，與台灣相反需注意</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 門票優惠 -->
+            <div class="spot-card rounded-xl p-6">
+                <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <i class="fas fa-ticket-alt text-purple-500"></i>
+                    門票優惠資訊
+                </h3>
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-tag text-green-500 mt-1"></i>
+                        <span><strong>美麗海水族館：</strong>建議線上預購門票享優惠</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-tag text-green-500 mt-1"></i>
+                        <span><strong>沖繩世界文化王國：</strong>套票含玉泉洞+王國村較划算</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-tag text-green-500 mt-1"></i>
+                        <span><strong>Round 1：</strong>會員制，現場辦理即可</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 天氣穿著 -->
+            <div class="spot-card rounded-xl p-6">
+                <h3 class="font-semibold text-lg mb-3 flex items-center gap-2">
+                    <i class="fas fa-cloud-sun text-cyan-500"></i>
+                    天氣與穿著
+                </h3>
+                <ul class="space-y-2 text-sm text-slate-700 dark:text-slate-300">
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-temperature-low text-blue-500 mt-1"></i>
+                        <span>1-2月為沖繩冬季，氣溫約 <strong>15-20°C</strong></span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-tshirt text-slate-500 mt-1"></i>
+                        <span>早晚溫差大，需攜帶薄外套</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-wind text-slate-500 mt-1"></i>
+                        <span>海邊風大，建議帶防風外套</span>
+                    </li>
+                    <li class="flex items-start gap-2">
+                        <i class="fas fa-umbrella text-blue-500 mt-1"></i>
+                        <span>下雨機率較高，建議備雨具和室內備案</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="bg-slate-100 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-700 mt-12 py-8 no-print">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-600 dark:text-slate-400">
+            <p class="text-sm">
+                <i class="fas fa-heart text-red-500"></i>
+                沖繩旅遊行程規劃 2026 | 祝旅途愉快
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // 行程資料（從 PDF 轉換）
+        const scheduleData = [
+            {
+                "date": "2026-01-28",
+                "day": "Day 1",
+                "title": "抵達日 - 那霸/北谷",
+                "spots": [
+                    {
+                        "time": "14:15",
+                        "title": "那霸機場",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市鏡水150",
+                        "mapcode": "33 187 359*27",
+                        "description": "抵達沖繩、入境、取行李",
+                        "openHours": "24小時",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "15:00",
+                        "title": "OTS租車（那霸機場店）",
+                        "city": "那霸",
+                        "address": "那霸機場內租車櫃台",
+                        "mapcode": "33 187 359*27",
+                        "description": "辦理租車手續、確認保險及兒童座椅",
+                        "openHours": "8:00-20:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "15:45",
+                        "title": "國際通",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市牧志3-2-10",
+                        "mapcode": "33 157 264*05",
+                        "description": "沖繩最熱鬧商店街、採購伴手禮、逛街",
+                        "openHours": "店家約10:00-22:00",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "Calbee Plus 國際通店",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市牧志3-2-2",
+                        "mapcode": "33 157 382*65",
+                        "description": "現做熱呼呼洋芋片、小孩最愛",
+                        "openHours": "10:00-21:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "17:30",
+                        "title": "Vessel Hotel Campana Okinawa",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜34-2",
+                        "mapcode": "33 525 223*17",
+                        "description": "Check-in、放置行李、休息",
+                        "openHours": "Check-in 14:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：暖暮拉麵（美濱店）",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜2-4-5",
+                        "mapcode": "33 526 450*56",
+                        "description": "沖繩超人氣拉麵、濃郁豚骨湯頭",
+                        "openHours": "11:00-翌2:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "19:30",
+                        "title": "美國村散步",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜",
+                        "mapcode": "33 526 450*63",
+                        "description": "摩天輪夜景、商店街閒逛",
+                        "openHours": "店家至21:00-22:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "21:00",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "第一天早點休息調整時差",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-29",
+                "day": "Day 2",
+                "title": "美麗海水族館 - 本部町一日遊",
+                "spots": [
+                    {
+                        "time": "7:30",
+                        "title": "飯店早餐",
+                        "city": "北谷",
+                        "address": "Vessel Hotel內",
+                        "mapcode": "-",
+                        "description": "飯店提供豐盛自助早餐",
+                        "openHours": "6:30-10:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "8:30",
+                        "title": "出發前往本部町",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "沿西海岸線風景優美",
+                        "openHours": "-",
+                        "drive": "90分鐘"
+                    },
+                    {
+                        "time": "10:00",
+                        "title": "沖繩美麗海水族館",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町石川424",
+                        "mapcode": "553 075 797*74",
+                        "description": "黑潮之海大水槽、鯨鯊、海豚表演、海龜館（建議停留3-4小時）",
+                        "openHours": "8:30-18:30（10-2月至17:30）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "13:30",
+                        "title": "午餐：岸本食堂",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町渡久地5",
+                        "mapcode": "206 888 617*37",
+                        "description": "本部超人氣沖繩麵老店、在地人推薦",
+                        "openHours": "11:00-17:30（週三休）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "15:00",
+                        "title": "備瀨福木林道",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町備瀬",
+                        "mapcode": "553 105 685*44",
+                        "description": "綠色隧道散步、可租腳踏車遊覽（1-1.5小時）",
+                        "openHours": "24小時開放",
+                        "drive": "2分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "備瀨崎海岸",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町備瀬",
+                        "mapcode": "553 106 072*87",
+                        "description": "海岸秘境、看夕陽、礁岩潮池探險",
+                        "openHours": "24小時開放",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "17:30",
+                        "title": "晚餐：燒肉本部牧場 本部店",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町大浜850-3",
+                        "mapcode": "206 888 493*33",
+                        "description": "沖繩頂級燒肉、自家牧場直送、兒童友善",
+                        "openHours": "11:00-22:00（L.O. 21:00）",
+                        "drive": "90分鐘"
+                    },
+                    {
+                        "time": "20:00",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "結束充實的一天",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-30",
+                "day": "Day 3",
+                "title": "宜野灣 - 購物娛樂日",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店早餐",
+                        "city": "北谷",
+                        "address": "Vessel Hotel內",
+                        "mapcode": "-",
+                        "description": "飯店自助早餐",
+                        "openHours": "6:30-10:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:00",
+                        "title": "出發前往宜野灣",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "-",
+                        "openHours": "-",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "宜野灣Round 1 Stadium",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市大山7-6-1",
+                        "mapcode": "33 343 103*15",
+                        "description": "保齡球、卡拉OK、遊戲機、運動娛樂複合設施（2.5-3小時）",
+                        "openHours": "平日10:00-翌6:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "12:30",
+                        "title": "午餐：琉球新麵 通堂 宜野灣店",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市宇地泊558-7",
+                        "mapcode": "33 341 266*35",
+                        "description": "超人氣沖繩麵、男人麵vs女人麵",
+                        "openHours": "11:00-翌1:00",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "14:00",
+                        "title": "宜野灣海濱公園",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市真志喜4-2-1",
+                        "mapcode": "33 374 652*66",
+                        "description": "大型溜滑梯、草地奔跑、海景步道",
+                        "openHours": "24小時開放",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "15:30",
+                        "title": "永旺夢樂城沖繩來客夢（AEON Mall）",
+                        "city": "北中城",
+                        "address": "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区",
+                        "mapcode": "33 530 406*60",
+                        "description": "沖繩最大購物中心、兒童遊樂區、逛街購物（2-2.5小時）",
+                        "openHours": "10:00-22:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：目利きの銀次 北谷店",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜9-21 Deport Island 2F",
+                        "mapcode": "33 525 504*71",
+                        "description": "日式居酒屋、新鮮海鮮、兒童友善",
+                        "openHours": "17:00-24:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "20:30",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "-",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-31",
+                "day": "Day 4",
+                "title": "北谷 + 換飯店日 - 恩納村",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店早餐 + Check-out",
+                        "city": "北谷",
+                        "address": "Vessel Hotel",
+                        "mapcode": "-",
+                        "description": "享用最後一次飯店早餐、整理行李、退房",
+                        "openHours": "Check-out 11:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "桃原公園",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町桃原3-17",
+                        "mapcode": "33 584 852*37",
+                        "description": "超長溜滑梯、小孩放電天堂（1.5小時）",
+                        "openHours": "24小時開放",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "11:30",
+                        "title": "日落海灘",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜2",
+                        "mapcode": "33 525 390*66",
+                        "description": "白沙海灘、玩水踏浪、海濱散步",
+                        "openHours": "24小時開放",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "12:30",
+                        "title": "午餐：七輪燒肉安安 北谷店",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜9-21 Deport Island 1F",
+                        "mapcode": "33 526 336*63",
+                        "description": "平價燒肉吃到飽、CP值高",
+                        "openHours": "11:30-23:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "15:30",
+                        "title": "萬座毛",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村恩納",
+                        "mapcode": "206 312 039*17",
+                        "description": "象鼻岩奇景、絕美海景懸崖（40分鐘）",
+                        "openHours": "8:00-18:00（10-3月至17:00）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "Zhyvago Coffee Works",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村瀬良垣1288",
+                        "mapcode": "206 221 357*00",
+                        "description": "絕美海景咖啡廳、下午茶時光",
+                        "openHours": "10:00-19:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "18:00",
+                        "title": "Okinawa Hinode Resort and Hot Spring Hotel",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村冨着志利福地原246-1",
+                        "mapcode": "206 005 657*43",
+                        "description": "Check-in、享受溫泉飯店設施",
+                        "openHours": "Check-in 15:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "19:00",
+                        "title": "晚餐：グルメ回轉壽司市場 美兵",
+                        "city": "沖繩市",
+                        "address": "沖縄県沖縄市美原1-9-21",
+                        "mapcode": "33 740 662*65",
+                        "description": "高品質迴轉壽司（或改飯店內用餐）",
+                        "openHours": "11:00-22:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "21:00",
+                        "title": "回飯店、泡溫泉",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "享受溫泉放鬆",
+                        "openHours": "溫泉至23:00",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-02-01",
+                "day": "Day 5",
+                "title": "南部巡禮 - 玉泉洞王國村",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店附近早餐",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "飯店無早餐，建議便利商店或附近餐廳",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:00",
+                        "title": "出發前往南部",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "經由高速公路前往南城市",
+                        "openHours": "-",
+                        "drive": "55分鐘"
+                    },
+                    {
+                        "time": "10:00",
+                        "title": "沖繩世界文化王國 + 玉泉洞",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城前川1336",
+                        "mapcode": "232 495 248*28",
+                        "description": "東洋最大鐘乳石洞、毒蛇博物館、EISA太鼓秀、琉球傳統村落體驗（3小時）",
+                        "openHours": "9:00-17:30（最終入場17:00）",
+                        "drive": "園區內"
+                    },
+                    {
+                        "time": "13:00",
+                        "title": "午餐：園區內餐廳 或 Gangala之谷",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城前川202",
+                        "mapcode": "232 494 728*62",
+                        "description": "鐘乳石洞穴咖啡廳（Gangala需事先預約導覽）",
+                        "openHours": "Gangala 10:00-18:00",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "14:30",
+                        "title": "新原海灘（ミーバルビーチ）",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城百名1599-6",
+                        "mapcode": "232 469 581*17",
+                        "description": "玻璃底船看熱帶魚、淺灘戲水、撿貝殼（1小時）",
+                        "openHours": "9:00-18:00（冬季至17:00）",
+                        "drive": "8分鐘"
+                    },
+                    {
+                        "time": "16:00",
+                        "title": "奧武島（おうじま）",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城奥武",
+                        "mapcode": "232 469 609*22",
+                        "description": "天婦羅小吃（中本鮮魚天婦羅店）、貓島、跨海小橋散步",
+                        "openHours": "天婦羅店約10:00-18:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "17:00",
+                        "title": "知念岬公園",
+                        "city": "南城",
+                        "address": "沖縄県南城市知念久手堅",
+                        "mapcode": "232 594 503*22",
+                        "description": "絕美夕陽海景、眺望久高島、免費景點",
+                        "openHours": "24小時開放",
+                        "drive": "55分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：飯店內或恩納村周邊",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "建議飯店內用餐或恩納村餐廳",
+                        "openHours": "-",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "20:00",
+                        "title": "回飯店休息",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "泡溫泉放鬆",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-02-02",
+                "day": "Day 6",
+                "title": "回程日",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "Check-out",
+                        "city": "恩納",
+                        "address": "Hinode Resort",
+                        "mapcode": "-",
+                        "description": "整理行李、退房",
+                        "openHours": "Check-out 10:00",
+                        "drive": "50分鐘"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "早餐：C&C Breakfast Okinawa",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町宮城2-99",
+                        "mapcode": "33 584 520*06",
+                        "description": "美式早午餐、夏威夷風格Pancake",
+                        "openHours": "7:00-17:00（L.O. 16:00）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "11:00",
+                        "title": "AEON Mall 購物 + 午餐",
+                        "city": "北中城",
+                        "address": "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区",
+                        "mapcode": "33 530 406*60",
+                        "description": "最後採購伴手禮、美食街用餐、退稅",
+                        "openHours": "10:00-22:00",
+                        "drive": "25分鐘"
+                    },
+                    {
+                        "time": "13:00",
+                        "title": "前往那霸機場",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市鏡水150",
+                        "mapcode": "33 187 359*27",
+                        "description": "還車、辦理登機手續、安檢",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "15:25",
+                        "title": "那霸機場起飛",
+                        "city": "那霸",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "返回台灣",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "16:10",
+                        "title": "抵達台北（台灣時間）",
+                        "city": "台北",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "回到溫暖的家",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            }
+        ];
+
+        // 當前顯示的日期索引
+        let currentDayIndex = 0;
+
+        // 初始化
+        document.addEventListener('DOMContentLoaded', () => {
+            initTheme();
+            renderDayTabs();
+            renderSchedule(currentDayIndex);
+            setupEventListeners();
+            lazyLoadImages();
+        });
+
+        // 深色模式切換
+        function initTheme() {
+            const theme = localStorage.getItem('theme') ||
+                (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+
+            if (theme === 'dark') {
+                document.documentElement.classList.add('dark');
+            }
+        }
+
+        function toggleTheme() {
+            const isDark = document.documentElement.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+        }
+
+        // 渲染日期分頁
+        function renderDayTabs() {
+            const tabsContainer = document.getElementById('day-tabs');
+
+            scheduleData.forEach((day, index) => {
+                const button = document.createElement('button');
+                button.className = `tab-button px-6 py-3 rounded-lg font-medium transition-all whitespace-nowrap ${
+                    index === currentDayIndex
+                        ? 'active bg-blue-50 dark:bg-blue-900/30'
+                        : 'hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400'
+                }`;
+                button.innerHTML = `
+                    <div class="text-left">
+                        <div class="text-sm font-semibold">${day.day}</div>
+                        <div class="text-xs mt-1">${formatDate(day.date)}</div>
+                    </div>
+                `;
+                button.onclick = () => switchDay(index);
+                tabsContainer.appendChild(button);
+            });
+        }
+
+        // 切換日期
+        function switchDay(index) {
+            currentDayIndex = index;
+
+            // 更新分頁樣式
+            const tabs = document.querySelectorAll('.tab-button');
+            tabs.forEach((tab, i) => {
+                if (i === index) {
+                    tab.classList.add('active', 'bg-blue-50', 'dark:bg-blue-900/30');
+                    tab.classList.remove('text-slate-600', 'dark:text-slate-400');
+                } else {
+                    tab.classList.remove('active', 'bg-blue-50', 'dark:bg-blue-900/30');
+                    tab.classList.add('text-slate-600', 'dark:text-slate-400');
+                }
+            });
+
+            renderSchedule(index);
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 渲染行程
+        function renderSchedule(dayIndex) {
+            const contentContainer = document.getElementById('schedule-content');
+            const day = scheduleData[dayIndex];
+
+            contentContainer.innerHTML = `
+                <div class="fade-in">
+                    <div class="mb-8">
+                        <h2 class="text-3xl font-bold mb-2">${day.day}｜${day.title}</h2>
+                        <p class="text-slate-600 dark:text-slate-400">${formatDate(day.date)}</p>
+                    </div>
+
+                    <div class="space-y-4">
+                        ${day.spots.map((spot, index) => renderSpotCard(spot, index)).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        // 渲染景點卡片
+        function renderSpotCard(spot, index) {
+            const hasValidMapCode = spot.mapcode && spot.mapcode !== '-';
+            const hasValidAddress = spot.address && spot.address !== '-';
+
+            return `
+                <div class="spot-card rounded-xl p-6">
+                    <div class="flex flex-col lg:flex-row gap-4">
+                        <!-- 左側：時間與圖示 -->
+                        <div class="flex lg:flex-col items-center lg:items-start gap-3 lg:gap-2 shrink-0">
+                            <div class="flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 text-white font-bold text-sm">
+                                ${index + 1}
+                            </div>
+                            <div class="text-center lg:text-left">
+                                <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">${spot.time}</div>
+                                ${spot.drive !== '-' ? `<div class="text-xs text-slate-500 dark:text-slate-400 mt-1"><i class="fas fa-car mr-1"></i>${spot.drive}</div>` : ''}
+                            </div>
+                        </div>
+
+                        <!-- 中間：主要資訊 -->
+                        <div class="flex-1 space-y-3">
+                            <div>
+                                <h3 class="text-xl font-bold mb-1">${spot.title}</h3>
+                                <div class="flex flex-wrap items-center gap-2 text-sm text-slate-600 dark:text-slate-400">
+                                    <span class="inline-flex items-center gap-1">
+                                        <i class="fas fa-map-marker-alt text-red-500"></i>
+                                        ${spot.city}
+                                    </span>
+                                    ${spot.openHours !== '-' ? `
+                                        <span class="inline-flex items-center gap-1">
+                                            <i class="fas fa-clock text-green-500"></i>
+                                            ${spot.openHours}
+                                        </span>
+                                    ` : ''}
+                                </div>
+                            </div>
+
+                            ${spot.description !== '-' ? `
+                                <p class="text-slate-700 dark:text-slate-300 leading-relaxed">
+                                    ${spot.description}
+                                </p>
+                            ` : ''}
+
+                            ${hasValidAddress ? `
+                                <div class="text-sm text-slate-600 dark:text-slate-400">
+                                    <i class="fas fa-location-dot mr-2"></i>
+                                    ${spot.address}
+                                </div>
+                            ` : ''}
+
+                            ${hasValidMapCode ? `
+                                <div class="flex flex-wrap items-center gap-2">
+                                    <span class="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 dark:bg-amber-900/30 text-amber-700 dark:text-amber-300 rounded-lg text-sm font-mono">
+                                        <i class="fas fa-map-pin"></i>
+                                        ${spot.mapcode}
+                                    </span>
+                                    <button
+                                        onclick="copyMapCode('${spot.mapcode}')"
+                                        class="btn-hover px-3 py-1.5 bg-slate-100 dark:bg-slate-700 hover:bg-slate-200 dark:hover:bg-slate-600 rounded-lg text-sm font-medium transition-all"
+                                    >
+                                        <i class="fas fa-copy mr-1"></i>
+                                        複製
+                                    </button>
+                                    <button
+                                        onclick="openGoogleMaps('${spot.mapcode}', '${spot.title.replace(/'/g, "\\'")}')"
+                                        class="btn-hover px-3 py-1.5 bg-blue-500 hover:bg-blue-600 text-white rounded-lg text-sm font-medium transition-all"
+                                    >
+                                        <i class="fas fa-map-marked-alt mr-1"></i>
+                                        開啟地圖
+                                    </button>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 複製 MapCode
+        function copyMapCode(mapcode) {
+            navigator.clipboard.writeText(mapcode).then(() => {
+                showToast('MapCode 已複製');
+            }).catch(() => {
+                // 降級方案
+                const textarea = document.createElement('textarea');
+                textarea.value = mapcode;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('MapCode 已複製');
+            });
+        }
+
+        // 開啟 Google Maps（使用 MapCode 搜尋）
+        function openGoogleMaps(mapcode, title) {
+            const query = encodeURIComponent(`${mapcode} ${title}`);
+            window.open(`https://www.google.com/maps/search/?api=1&query=${query}`, '_blank');
+        }
+
+        // 顯示提示訊息
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'copy-toast';
+            toast.innerHTML = `<i class="fas fa-check-circle mr-2"></i>${message}`;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 2000);
+        }
+
+        // 日期格式化
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const days = ['日', '一', '二', '三', '四', '五', '六'];
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekday = days[date.getDay()];
+            return `${month}月${day}日（${weekday}）`;
+        }
+
+        // 圖片懶加載
+        function lazyLoadImages() {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+
+            if ('IntersectionObserver' in window) {
+                const imageObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.classList.add('loaded');
+                            imageObserver.unobserve(img);
+                        }
+                    });
+                });
+
+                images.forEach(img => imageObserver.observe(img));
+            } else {
+                images.forEach(img => img.classList.add('loaded'));
+            }
+        }
+
+        // 設置事件監聽
+        function setupEventListeners() {
+            document.getElementById('theme-toggle').addEventListener('click', toggleTheme);
+
+            // 鍵盤快捷鍵
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowLeft' && currentDayIndex > 0) {
+                    switchDay(currentDayIndex - 1);
+                } else if (e.key === 'ArrowRight' && currentDayIndex < scheduleData.length - 1) {
+                    switchDay(currentDayIndex + 1);
+                }
+            });
+        }
+    </script>
+</body>
+</html>
