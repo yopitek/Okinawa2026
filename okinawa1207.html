@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026 沖繩家族自駕行程</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+        }
+
+        :root {
+            --bg: #fff;
+            --bg-2: #f8fafc;
+            --text: #0f172a;
+            --text-2: #64748b;
+            --border: #e2e8f0;
+            --accent: #3b82f6
+        }
+
+        .dark {
+            --bg: #0f172a;
+            --bg-2: #1e293b;
+            --text: #f1f5f9;
+            --text-2: #94a3b8;
+            --border: #334155;
+            --accent: #60a5fa
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            transition: all .3s
+        }
+
+        .card {
+            background: var(--bg-2);
+            border: 1px solid var(--border);
+            transition: all .3s
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, .1)
+        }
+
+        .btn {
+            transition: all .2s
+        }
+
+        .btn:hover {
+            transform: scale(1.02)
+        }
+
+        .tab {
+            color: var(--text-2);
+            border-bottom: 2px solid transparent;
+            transition: all .2s
+        }
+
+        .tab:hover {
+            color: var(--text)
+        }
+
+        .tab.active {
+            color: var(--accent);
+            border-color: var(--accent)
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #10b981;
+            color: #fff;
+            padding: 1rem 1.5rem;
+            border-radius: .5rem;
+            transform: translateY(100px);
+            opacity: 0;
+            transition: all .3s;
+            z-index: 1000
+        }
+
+        .toast.show {
+            transform: translateY(0);
+            opacity: 1
+        }
+
+        .completed {
+            opacity: .5
+        }
+
+        @media print {
+            .no-print {
+                display: none !important
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="toast" class="toast"></div>
+    <header class="sticky top-0 z-50 no-print" style="background:var(--bg-2);border-bottom:1px solid var(--border)">
+        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <div>
+                <h1 class="text-2xl font-bold">🌺 沖繩家族自駕行程</h1>
+                <p class="text-sm" style="color:var(--text-2)">2026.01.28 - 02.02</p>
+            </div>
+            <div class="flex gap-3">
+                <button onclick="window.print()" class="btn px-4 py-2 rounded-lg"
+                    style="background:var(--bg);border:1px solid var(--border)"><i class="fas fa-print"></i></button>
+                <button onclick="toggleTheme()" id="theme-btn" class="btn px-4 py-2 rounded-lg"
+                    style="background:var(--bg);border:1px solid var(--border)"><i class="fas fa-moon"></i></button>
+            </div>
+        </div>
+    </header>
+    <div class="flex">
+        <nav class="w-64 h-screen sticky top-16 no-print hidden md:block"
+            style="background:var(--bg-2);border-right:1px solid var(--border)">
+            <div class="p-4 space-y-2" id="nav-tabs"></div>
+        </nav>
+        <main class="flex-1 container mx-auto px-4 py-8">
+            <div class="md:hidden mb-6 overflow-x-auto no-print">
+                <div class="flex gap-2 min-w-max" id="mobile-tabs"></div>
+            </div>
+            <div id="content"></div>
+        </main>
+    </div>
+    <script>
+        const data = {
+            days: [
+                {
+                    date: "2026-01-28", title: "Day 1｜抵達日 - 那霸/北谷", summary: { highlight: "抵達沖繩、國際通、美國村", notes: "確認兒童座椅、注意靠左行駛" }, hotel: { name: "Vessel Hotel Campana Okinawa", address: "沖縄県中頭郡北谷町美浜9-22", mapcode: "33 525 266*06" }, spots: [
+                        { id: "d1-1", seq: 1, time: "14:15", title: "那霸機場", city: "那霸", address: "沖縄県那覇市鏡水150", mapcode: "33 187 359*27", description: "抵達沖繩那霸機場，辦理入境手續並領取行李。機場設施完善，有免稅店、餐廳和便利商店；可在此購買交通IC卡或兌換日幣，提供免費WiFi方便確認接駁與行程。", openHours: "24小時", drive: "-" },
+                        { id: "d1-2", seq: 2, time: "15:00", title: "Orix 租車（那霸機場店）", city: "那霸", address: "沖縄県那覇市鏡水4-1", mapcode: "33 187 416*74", description: "前往租車櫃檯辦理手續，確認兩個兒童安全座椅（10歲、8歲各一）。工作人員會說明車輛操作、ETC卡使用與保險內容，索取中文導航設定並確認還車時間與地點。", openHours: "8:00-20:00", drive: "5分鐘" },
+                        { id: "d1-3", seq: 3, time: "15:45", title: "國際通", city: "那霸", address: "沖縄県那覇市牧志", mapcode: "33 157 264*54", description: "沖繩最熱鬧的商店街，全長約1.6公里，兩旁商店林立。可購買紅芋塔、黑糖、泡盛等伴手禮，並有藥妝店、餐廳與在地特色小店，建議預留1-2小時逛街感受氛圍。", openHours: "店家約10:00-22:00", drive: "20分鐘" },
+                        { id: "d1-4", seq: 4, time: "16:30", title: "Calbee Plus 國際通店", city: "那霸", address: "沖縄県那覇市牧志3-2-2", mapcode: "33 157 382*65", description: "Calbee直營店，現場製作熱呼呼的薯條三兄弟，多種限定口味可選。店內還有各式Calbee零食與沖繩限定商品，人氣旺建議避開尖峰時段以免久候。", openHours: "10:00-21:00", drive: "步行" },
+                        { id: "d1-5", seq: 5, time: "17:30", title: "Vessel Hotel Campana Okinawa", city: "北谷", address: "沖縄県中頭郡北谷町美浜9-22", mapcode: "33 525 266*06", description: "北谷優質飯店，提供豐盛自助早餐；房間寬敞舒適，部分房型可眺望海景。附大浴場，步行即可到美國村與日落海灘，免費停車適合親子入住。", openHours: "Check-in 14:00", drive: "30分鐘", isHotel: true },
+                        { id: "d1-6", seq: 6, time: "18:30", title: "晚餐：暖暮拉麵（美濱店）", city: "北谷", address: "沖縄県中頭郡北谷町美浜9-21", mapcode: "33 525 325*22", description: "九州知名連鎖拉麵，以濃郁豚骨湯頭與Q彈麵條聞名，叉燒軟嫩可免費加麵。位於美國村內，用餐環境舒適，深受在地人推薦。", openHours: "11:00-23:00", drive: "5分鐘", isFood: true },
+                        { id: "d1-7", seq: 7, time: "19:30", title: "美國村散步", city: "北谷", address: "沖縄県中頭郡北谷町美浜", mapcode: "33 526 450*76", description: "充滿美式風情的購物娛樂區，有摩天輪、商店、餐廳與電影院。夜晚燈光璀璨浪漫，週末常有街頭表演與市集活動，適合全家散步購物。", openHours: "店家約10:00-22:00", drive: "步行" },
+                        { id: "d1-8", seq: 8, time: "21:00", title: "回飯店休息", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "返回飯店整理今日戰利品，可使用大浴場放鬆消除旅途疲勞。建議早點休息，為隔天長途車程儲備體力；飯店提供免費WiFi可分享照片。", openHours: "-", drive: "步行" }
+                    ]
+                },
+                {
+                    date: "2026-01-29", title: "Day 2｜美麗海水族館 - 本部町一日遊", summary: { highlight: "沖繩美麗海水族館、備瀨福木林道", notes: "建議線上購票、燒肉本部牧場需預約" }, hotel: { name: "Vessel Hotel Campana Okinawa", mapcode: "33 525 266*06" }, spots: [
+                        { id: "d2-1", seq: 1, time: "7:30", title: "飯店早餐", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "享用飯店自助早餐", openHours: "6:30-10:00", drive: "-", isFood: true },
+                        { id: "d2-2", seq: 2, time: "8:30", title: "出發前往本部町", city: "北谷", address: "-", mapcode: "-", description: "開車前往沖繩北部", openHours: "-", drive: "-" },
+                        { id: "d2-3", seq: 3, time: "10:00", title: "沖繩美麗海水族館", city: "本部", address: "沖縄県国頭郡本部町石川424", mapcode: "553 075 797*74", description: "擁有世界最大的水族箱「黑潮之海」，可近距離觀賞鯨鯊與鬼蝠魟。展示豐富海洋生物與珊瑚礁，館外還有海豚表演與海龜館，建議線上預購門票並預留3-4小時參觀。", openHours: "8:30-18:30（最晚入館17:30）", drive: "90分鐘" },
+                        { id: "d2-4", seq: 4, time: "13:30", title: "午餐：岸本食堂", city: "本部", address: "沖縄県国頭郡本部町渡久地5", mapcode: "206 888 617*33", description: "本部町創業百年的沖繩麵老店，手工麵條搭配清爽湯頭，配料有軟骨與三層肉。店面樸實價格實惠，一碗約500-700日圓，週三公休且用餐尖峰易排隊。", openHours: "11:00-17:30（週三公休）", drive: "15分鐘", isFood: true },
+                        { id: "d2-5", seq: 5, time: "15:00", title: "備瀨福木林道", city: "本部", address: "沖縄県国頭郡本部町備瀬", mapcode: "553 105 685*17", description: "被福木樹包圍的綠色隧道，陽光灑落形成美麗光影。可租借腳踏車漫遊，感受傳統石牆民宅與純樸聚落風情，免費景點24小時開放。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d2-6", seq: 6, time: "16:30", title: "備瀨崎海岸", city: "本部", address: "沖縄県国頭郡本部町備瀬", mapcode: "553 106 008*25", description: "備瀨地區的絕美海岸，清澈碧藍海水與獨特珊瑚礁岩。傍晚可欣賞夕陽，海岸線平緩適合散步拍照，人潮少能悠閒享受海天一色。", openHours: "24小時開放", drive: "5分鐘" },
+                        { id: "d2-7", seq: 7, time: "17:30", title: "晚餐：燒肉本部牧場 本部店", city: "本部", address: "沖縄県国頭郡本部町大浜881-1", mapcode: "206 888 296*35", description: "使用本部町飼養的本部牛，肉質鮮嫩油花均勻。提供多部位和牛燒肉搭配特製醬料，環境舒適服務親切；價格偏高但品質優，建議事先電話預約。", openHours: "17:00-22:00（建議預約）", drive: "10分鐘", isFood: true },
+                        { id: "d2-8", seq: 8, time: "20:00", title: "回飯店休息", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "回程、休息", openHours: "-", drive: "90分鐘" }
+                    ]
+                },
+                {
+                    date: "2026-01-30", title: "Day 3｜宜野灣 - 購物娛樂日", summary: { highlight: "Round 1娛樂、AEON Mall購物", notes: "親子娛樂、採購伴手禮" }, hotel: { name: "Vessel Hotel Campana Okinawa", mapcode: "33 525 266*06" }, spots: [
+                        { id: "d3-1", seq: 1, time: "8:00", title: "飯店早餐", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "享用飯店自助早餐", openHours: "6:30-10:00", drive: "-", isFood: true },
+                        { id: "d3-2", seq: 2, time: "9:00", title: "出發前往宜野灣", city: "北谷", address: "-", mapcode: "-", description: "開車前往宜野灣", openHours: "-", drive: "-" },
+                        { id: "d3-3", seq: 3, time: "9:30", title: "宜野灣Round 1 Stadium", city: "宜野灣", address: "沖縄県宜野湾市大山7-3-12", mapcode: "33 341 117*26", description: "大型綜合娛樂設施，提供保齡球、卡拉OK、電玩、撞球、桌球等。24小時營業並設有兒童遊戲區，適合親子同樂，雨天也能暢玩，建議購買套票預留2-3小時。", openHours: "24小時營業", drive: "15分鐘" },
+                        { id: "d3-4", seq: 4, time: "12:30", title: "午餐：琉球新麵 通堂 宜野灣店", city: "宜野灣", address: "沖縄県宜野湾市宇地泊558-6", mapcode: "33 312 486*74", description: "沖繩知名連鎖拉麵，分為濃郁豚骨「男人麵」與清爽魚介「女人麵」。麵條Q彈配料豐富，可免費加麵，用餐時間常需排隊，價格約800-1000日圓。", openHours: "11:00-23:00", drive: "10分鐘", isFood: true },
+                        { id: "d3-5", seq: 5, time: "14:00", title: "宜野灣海濱公園", city: "宜野灣", address: "沖縄県宜野湾市真志喜4-2-1", mapcode: "33 342 119*06", description: "面向東海的海濱公園，擁有寬闊草地與海景步道，設有兒童遊樂設施與運動場。適合野餐散步，傍晚可賞夕陽，免費景點且停車充足。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d3-6", seq: 6, time: "15:30", title: "永旺夢樂城沖繩來客夢（AEON Mall）", city: "北中城", address: "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区", mapcode: "33 530 406*60", description: "沖繩最大購物中心之一，超過200家店舖涵蓋服飾、電器、藥妝、超市與美食街。提供退稅服務，伴手禮選擇多，建議預留2-3小時購物用餐。", openHours: "10:00-22:00", drive: "20分鐘" },
+                        { id: "d3-7", seq: 7, time: "18:30", title: "晚餐：目利きの銀次 新都心本舗", city: "那霸", address: "沖縄県那覇市おもろまち4-8-9", mapcode: "33 188 515*65", description: "日式連鎖居酒屋，主打新鮮海產與各式日本料理。氣氛熱鬧、菜單多元包含生魚片、串燒與炸物，價格合理、營業至深夜，適合家庭聚餐。", openHours: "17:00-24:00", drive: "25分鐘", isFood: true },
+                        { id: "d3-8", seq: 8, time: "20:30", title: "回飯店休息", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "回程、休息", openHours: "-", drive: "20分鐘" }
+                    ]
+                },
+                {
+                    date: "2026-01-31", title: "Day 4｜北谷 + 換飯店日 - 恩納村", summary: { highlight: "萬座毛、換飯店至恩納村", notes: "Check-out Vessel、Check-in Hinode Resort" }, hotel: { name: "Okinawa Hinode Resort and Hot Spring Hotel", address: "沖縄県国頭郡恩納村仲泊1055", mapcode: "206 096 711*30" }, spots: [
+                        { id: "d4-1", seq: 1, time: "8:00", title: "飯店早餐 + Check-out", city: "北谷", address: "Vessel Hotel Campana Okinawa", mapcode: "-", description: "享用早餐、退房", openHours: "Check-out 11:00", drive: "-", isFood: true },
+                        { id: "d4-2", seq: 2, time: "9:30", title: "桃原公園", city: "北谷", address: "沖縄県中頭郡北谷町桃原1-9", mapcode: "33 554 298*50", description: "北谷人氣公園，超長滾輪溜滑梯深受小朋友喜愛，還有攀爬架與盪鞦韆等設施。視野開闊可眺望海景，免費且停車場充足，適合親子野餐。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d4-3", seq: 3, time: "11:30", title: "日落海灘", city: "北谷", address: "沖縄県中頭郡北谷町美浜2", mapcode: "33 525 087*03", description: "北谷著名海灘，沙質細緻、海水清澈，設有淋浴與更衣室。適合戲水玩沙，傍晚欣賞夕陽最佳，免費景點夏季有救生員駐守。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d4-4", seq: 4, time: "13:00", title: "午餐：グルメ回轉壽司市場", city: "沖繩市", address: "沖縄県沖縄市中央1-18-12", mapcode: "33 594 735*64", description: "平價迴轉壽司，食材新鮮種類多，除了壽司還有炸物與烏龍麵。環境乾淨適合家庭用餐，用餐尖峰常需排隊，價格約每盤100-300日圓。", openHours: "11:00-22:00", drive: "15分鐘", isFood: true },
+                        { id: "d4-5", seq: 5, time: "14:30", title: "Zhyvago Coffee Works", city: "北谷", address: "沖縄県中頭郡北谷町宮城2-220", mapcode: "33 555 297*82", description: "北谷海邊網美咖啡廳，擁有絕佳海景視野，提供精品咖啡、手作甜點與輕食。裝潢時尚簡約，戶外座位能直接眺望大海，熱門時段建議預約。", openHours: "10:00-19:00", drive: "15分鐘" },
+                        { id: "d4-6", seq: 6, time: "15:30", title: "萬座毛", city: "恩納", address: "沖縄県国頭郡恩納村恩納2767", mapcode: "206 312 039*17", description: "沖繩代表性景點，因象鼻形斷崖聞名。可眺望壯闊東海漸層藍色海景，設有步道與觀景台，入場費100日圓，建議傍晚前往欣賞夕陽。", openHours: "8:00-18:00（入場費100日圓）", drive: "30分鐘" },
+                        { id: "d4-7", seq: 7, time: "18:00", title: "Okinawa Hinode Resort and Hot Spring Hotel", city: "恩納", address: "沖縄県国頭郡恩納村仲泊1055", mapcode: "206 096 711*30", description: "Check-in、溫泉飯店、無早餐", openHours: "Check-in 15:00", drive: "20分鐘", isHotel: true },
+                        { id: "d4-8", seq: 8, time: "19:00", title: "晚餐：琉球的牛 恩納店", city: "恩納", address: "沖縄県国頭郡恩納村仲泊1656-9", mapcode: "206 127 520*55", description: "使用沖繩產石垣牛與黑毛和牛，肉質頂級入口即化。提供多部位燒肉搭配特製醬料與鹽品，環境高雅服務專業，價格較高但值得，建議預約並預留充裕用餐時間。", openHours: "17:00-23:00（建議預約）", drive: "5分鐘", isFood: true },
+                        { id: "d4-9", seq: 9, time: "21:00", title: "回飯店、泡溫泉", city: "恩納", address: "Okinawa Hinode Resort", mapcode: "-", description: "享受溫泉、放鬆休息", openHours: "溫泉6:00-24:00", drive: "步行" }
+                    ]
+                },
+                {
+                    date: "2026-02-01", title: "Day 5｜南部巡禮 - 玉泉洞王國村", summary: { highlight: "沖繩世界文化王國、玉泉洞、奧武島", notes: "建議購買套票、飯店無早餐需自理" }, hotel: { name: "Okinawa Hinode Resort", mapcode: "206 096 711*30" }, spots: [
+                        { id: "d5-1", seq: 1, time: "8:00", title: "飯店附近早餐", city: "恩納", address: "便利商店或附近餐廳", mapcode: "-", description: "飯店無早餐、自行準備", openHours: "-", drive: "-", isFood: true },
+                        { id: "d5-2", seq: 2, time: "9:00", title: "出發前往南部", city: "恩納", address: "-", mapcode: "-", description: "開車前往南城市", openHours: "-", drive: "-" },
+                        { id: "d5-3", seq: 3, time: "10:00", title: "沖繩世界文化王國 + 玉泉洞", city: "南城", address: "沖縄県南城市玉城前川1336", mapcode: "232 495 330*28", description: "沖繩最大的主題樂園，結合玉泉洞與琉球文化體驗。玉泉洞是日本第二長鐘乳石洞，景觀壯麗，園區有城下町、毒蛇博物館、工藝體驗與EISA太鼓表演，建議購買套票預留3-4小時。", openHours: "9:00-17:30（最晚入場16:00）", drive: "60分鐘" },
+                        { id: "d5-4", seq: 4, time: "13:00", title: "午餐：園區內餐廳", city: "南城", address: "王國村內Nanto屋或石垣牛燒肉串", mapcode: "-", description: "沖繩料理、園區內用餐", openHours: "依店家而定", drive: "步行", isFood: true },
+                        { id: "d5-5", seq: 5, time: "14:30", title: "新原海灘（ミーバルビーチ）", city: "南城", address: "沖縄県南城市玉城百名", mapcode: "232 469 550*40", description: "南城市天然海灘，海水清澈沙質細白，保留原始風貌人潮較少。適合游泳浮潛放鬆，但設施簡單缺乏救生員，戲水需注意安全。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d5-6", seq: 6, time: "16:00", title: "奧武島（おうじま）", city: "南城", address: "沖縄県南城市玉城奧武", mapcode: "232 468 617*06", description: "以橋連接本島的小島，聚集許多貓咪，被稱為貓島。島上有多家天婦羅專賣店，現炸天婦羅香酥美味；風情純樸適合散步拍照。", openHours: "24小時開放", drive: "10分鐘" },
+                        { id: "d5-7", seq: 7, time: "17:00", title: "知念岬公園", city: "南城", address: "沖縄県南城市知念久手堅", mapcode: "232 594 503*22", description: "位於南城市的海岬公園，擁有270度遼闊海景，可眺望久高島與太平洋。是欣賞日出與夕陽的絕佳地點，步道與觀景台免費開放，拍照氛圍浪漫。", openHours: "24小時開放", drive: "15分鐘" },
+                        { id: "d5-8", seq: 8, time: "18:30", title: "晚餐：飯店內或恩納村周邊", city: "恩納", address: "恩納村餐廳", mapcode: "-", description: "建議飯店附近用餐", openHours: "依店家而定", drive: "60分鐘", isFood: true },
+                        { id: "d5-9", seq: 9, time: "20:00", title: "回飯店休息", city: "恩納", address: "Okinawa Hinode Resort", mapcode: "-", description: "泡溫泉、休息", openHours: "-", drive: "-" }
+                    ]
+                },
+                {
+                    date: "2026-02-02", title: "Day 6｜回程日", summary: { highlight: "最後採購、返回台灣", notes: "Check-out 10:00、還車12:00" }, spots: [
+                        { id: "d6-1", seq: 1, time: "8:00", title: "Check-out", city: "恩納", address: "Okinawa Hinode Resort", mapcode: "-", description: "整理行李、退房", openHours: "Check-out 10:00", drive: "-" },
+                        { id: "d6-2", seq: 2, time: "9:30", title: "早餐：C&C Breakfast Okinawa", city: "北谷", address: "沖縄県中頭郡北谷町宮城2-99", mapcode: "33 584 520*06", description: "北谷人氣早午餐店，提供夏威夷風Pancake、Acai Bowl、班尼迪克蛋等美式早餐。食材新鮮份量足、擺盤精緻，價格約1000-1500日圓，建議提早前往以免久候。", openHours: "7:00-17:00（L.O. 16:00）", drive: "50分鐘", isFood: true },
+                        { id: "d6-3", seq: 3, time: "11:00", title: "AEON Mall 購物 + 午餐", city: "北中城", address: "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区", mapcode: "33 530 406*60", description: "最後採購伴手禮的好地方，藥妝、電器、零食到超市熟食一應俱全，美食街選擇多元。提供退稅服務與大停車場，建議預留2-3小時購物用餐後直奔機場。", openHours: "10:00-22:00", drive: "10分鐘" },
+                        { id: "d6-4", seq: 4, time: "12:00", title: "Orix 租車（那霸機場店）", city: "那霸", address: "沖縄県那覇市鏡水4-1", mapcode: "33 187 416*74", description: "歸還租賃車輛，工作人員檢查車況並結算費用。記得加滿油後還車並確認ETC卡使用費，預留約30分鐘辦理，搭乘免費接駁車前往機場。", openHours: "8:00-20:00", drive: "25分鐘" },
+                        { id: "d6-5", seq: 5, time: "12:20", title: "前往那霸機場", city: "那霸", address: "沖縄県那覇市鏡水150", mapcode: "33 187 359*27", description: "辦理登機手續、安檢、退稅", openHours: "-", drive: "5分鐘" },
+                        { id: "d6-6", seq: 6, time: "15:25", title: "那霸機場起飛", city: "那霸", address: "那霸機場國際線", mapcode: "-", description: "返回台灣", openHours: "-", drive: "-" },
+                        { id: "d6-7", seq: 7, time: "16:10", title: "抵達台北（台灣時間）", city: "台北", address: "桃園國際機場", mapcode: "-", description: "回到溫暖的家", openHours: "-", drive: "-" }
+                    ]
+                }
+            ],
+            guides: [
+                {
+                    id: "guide-1",
+                    title: "國際通",
+                    icon: "fa-shopping-bag",
+                    color: "#f59e0b",
+                    description: "沖繩最熱鬧的商店街，全長約1.6公里，兩旁商店林立。可購買紅芋塔、黑糖、泡盛等沖繩特產伴手禮，還有許多特色小店、藥妝店和餐廳。",
+                    highlights: ["暖暮拉麵", "Calbee Plus", "御菓子御殿", "鹽屋", "第一牧志公設市場"],
+                    tips: "建議預留2-3小時逛街購物，晚上燈光璀璨氣氛更佳",
+                    url: "https://bobbyfun.tw/2024-01-08-2708/"
+                },
+                {
+                    id: "guide-2",
+                    title: "美國村",
+                    icon: "fa-landmark",
+                    color: "#3b82f6",
+                    description: "充滿美式風情的購物娛樂區，有大型摩天輪、各式商店、餐廳和電影院。夜晚燈光璀璨，氣氛浪漫，適合全家散步購物。",
+                    highlights: ["摩天輪", "Depot Island", "日落海灘", "Blue Seal冰淇淋", "美式餐廳"],
+                    tips: "傍晚前往可欣賞夕陽，晚上拍攝摩天輪夜景最美",
+                    url: "https://www.wendyjourney.com/okinawa-american-village/"
+                },
+                {
+                    id: "guide-3",
+                    title: "Round 1 Stadium",
+                    icon: "fa-bowling-ball",
+                    color: "#10b981",
+                    description: "大型綜合娛樂設施，提供保齡球、卡拉OK、電玩遊戲、撞球、桌球等多元娛樂。24小時營業，設有兒童遊戲區，非常適合親子同樂。",
+                    highlights: ["保齡球", "卡拉OK", "電玩遊戲", "兒童遊戲區", "24小時營業"],
+                    tips: "可購買套票較划算，建議預留2-3小時遊玩，是雨天備案的好選擇",
+                    url: "https://www.daydaytravel.hk/okinawa-family-travel-round-1-stadium/"
+                },
+                {
+                    id: "guide-4",
+                    title: "AEON Mall 永旺夢樂城",
+                    icon: "fa-store",
+                    color: "#8b5cf6",
+                    description: "沖繩最大的購物中心之一，擁有超過200家店舖。包含服飾、電器、藥妝、超市、美食街等，可購買沖繩特產伴手禮，也有退稅服務。",
+                    highlights: ["藥妝店", "電器", "超市", "美食街", "退稅服務"],
+                    tips: "建議預留2-3小時購物用餐，是採購伴手禮的最佳地點",
+                    url: "https://bobbyfun.tw/2024-01-07-2699/"
+                },
+                {
+                    id: "guide-5",
+                    title: "玉泉洞 沖繩世界",
+                    icon: "fa-mountain",
+                    color: "#ef4444",
+                    description: "沖繩最大的主題樂園，結合自然洞穴「玉泉洞」和琉球文化體驗。玉泉洞是日本第二長的鐘乳石洞，洞內景觀壯麗，還有精彩的EISA太鼓表演和毒蛇秀。",
+                    highlights: ["玉泉洞鐘乳石", "琉球王國城下町", "EISA太鼓表演", "毒蛇秀", "傳統工藝體驗"],
+                    tips: "建議購買套票較划算，預留3-4小時遊覽，洞內溫度約21°C需攜帶薄外套",
+                    url: "https://okinawa.letsgojp.com/archives/757370/"
+                },
+                {
+                    id: "guide-6",
+                    title: "Nanto屋",
+                    icon: "fa-utensils",
+                    color: "#f97316",
+                    description: "位於沖繩世界文化王國內的人氣餐廳，提供正宗沖繩麵和阿古豬排套餐。環境舒適，價格實惠，是遊覽玉泉洞後的用餐好選擇。",
+                    highlights: ["沖繩麵", "阿古豬排", "湯豆腐", "天婦羅涼麵", "蝶豆花茶"],
+                    tips: "午餐時段人潮較多，建議避開尖峰時段或提早用餐",
+                    url: "https://pfse64289.pixnet.net/blog/post/347028505"
+                }
+            ]
+        };
+        let currentDay = 0;
+        const completed = JSON.parse(localStorage.getItem('completed') || '{}');
+        const notes = JSON.parse(localStorage.getItem('notes') || '{}');
+        function init() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.get('day')) { const idx = data.days.findIndex(d => d.date === params.get('day')); if (idx >= 0) currentDay = idx; }
+            if (window.matchMedia('(prefers-color-scheme: dark)').matches) { document.documentElement.classList.add('dark'); updateThemeIcon(); }
+            renderTabs(); renderDay();
+        }
+        function renderTabs() {
+            const nav = document.getElementById('nav-tabs');
+            const mobile = document.getElementById('mobile-tabs');
+            const dayTabs = data.days.map((d, i) => `<button onclick="showDay(${i})" class="tab ${i === currentDay ? 'active' : ''} w-full text-left px-4 py-3 rounded-lg"><div class="font-medium">${d.title.split('｜')[0]}</div><div class="text-sm" style="color:var(--text-2)">${d.date.slice(5)}</div></button>`).join('');
+            const quickTab = `<button onclick="showSpotIndex()" class="tab ${currentDay === 'spotIndex' ? 'active' : ''} w-full text-left px-4 py-3 rounded-lg"><div class="font-medium"><i class="fas fa-magnifying-glass mr-2"></i>景點速查</div><div class="text-sm" style="color:var(--text-2)">快速搜尋</div></button>`;
+            const guideTab = `<button onclick="showGuides()" class="tab ${currentDay === 'guides' ? 'active' : ''} w-full text-left px-4 py-3 rounded-lg"><div class="font-medium"><i class="fas fa-book mr-2"></i>景點介紹</div><div class="text-sm" style="color:var(--text-2)">推薦必看</div></button>`;
+            nav.innerHTML = mobile.innerHTML = dayTabs + quickTab + guideTab;
+        }
+        function showDay(idx) { currentDay = idx; renderTabs(); renderDay(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function renderDay() {
+            const day = data.days[currentDay];
+            const html = `<div class="space-y-6">
+<div class="card rounded-2xl p-6">
+<h2 class="text-3xl font-bold mb-2">${day.title}</h2>
+<p class="mb-4" style="color:var(--text-2)">${day.summary.highlight}</p>
+${day.summary.notes ? `<div class="flex items-start gap-2 p-3 rounded-lg" style="background:var(--bg)"><i class="fas fa-info-circle mt-1" style="color:var(--accent)"></i><span class="text-sm">${day.summary.notes}</span></div>` : ''}
+</div>
+${day.hotel ? `<div class="card rounded-2xl p-6"><h3 class="text-xl font-semibold mb-3 flex items-center"><i class="fas fa-hotel mr-2" style="color:var(--accent)"></i>住宿資訊</h3><div class="space-y-2"><div class="font-medium">${day.hotel.name}</div>${day.hotel.address ? `<div class="text-sm" style="color:var(--text-2)">${day.hotel.address}</div>` : ''} ${day.hotel.mapcode ? `<div class="flex items-center gap-2"><code class="px-2 py-1 rounded text-sm" style="background:var(--bg)">${day.hotel.mapcode}</code><button onclick="copyMapCode('${day.hotel.mapcode}')" class="btn px-2 py-1 rounded text-xs" style="background:var(--bg)"><i class="fas fa-copy"></i></button></div>` : ''}</div></div>` : ''}
+<div class="space-y-4">
+${day.spots.map(s => `<div class="card rounded-2xl p-6 ${completed[s.id] ? 'completed' : ''}" id="spot-${s.id}">
+<div class="flex items-start justify-between mb-4">
+<div class="flex items-start gap-4 flex-1">
+<div class="flex-shrink-0">
+<div class="w-12 h-12 rounded-full flex items-center justify-center font-bold text-white" style="background:linear-gradient(135deg,#667eea 0%,#764ba2 100%)">${s.seq}</div>
+</div>
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2 flex-wrap">
+<span class="px-2 py-1 rounded text-xs" style="background:var(--bg);color:var(--text-2)"><i class="fas fa-calendar mr-1"></i>${day.date}</span>
+<span class="px-2 py-1 rounded text-xs" style="background:var(--bg);color:var(--text-2)"><i class="fas fa-map-pin mr-1"></i>${s.city}</span>
+<span class="px-3 py-1 rounded-full text-xs font-medium" style="background:var(--bg);color:var(--text)"><i class="fas fa-clock mr-1"></i>${s.time}</span>
+${s.isHotel ? '<span class="px-3 py-1 rounded-full text-xs font-medium" style="background:#dbeafe;color:#1e40af"><i class="fas fa-hotel mr-1"></i>住宿</span>' : ''}
+${s.isFood ? '<span class="px-3 py-1 rounded-full text-xs font-medium" style="background:#fef3c7;color:#92400e"><i class="fas fa-utensils mr-1"></i>用餐</span>' : ''}
+</div>
+<h3 class="text-xl font-semibold mb-2">${s.title}</h3>
+<p class="mb-3 leading-relaxed" style="color:var(--text-2)">${s.description}</p>
+<div class="grid md:grid-cols-2 gap-3 text-sm">
+${s.address && s.address !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-map-marker-alt mt-1" style="color:var(--accent)"></i><div><div class="font-medium">地址</div><div style="color:var(--text-2)">${s.address}</div></div></div>` : ''}
+${s.openHours && s.openHours !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-clock mt-1" style="color:var(--accent)"></i><div><div class="font-medium">營業時間</div><div style="color:var(--text-2)">${s.openHours}</div></div></div>` : ''}
+${s.drive && s.drive !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-car mt-1" style="color:var(--accent)"></i><div><div class="font-medium">車程</div><div style="color:var(--text-2)">${s.drive}</div></div></div>` : ''}
+${s.mapcode && s.mapcode !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-map mt-1" style="color:var(--accent)"></i><div class="flex-1"><div class="font-medium mb-1">Map Code</div><div class="flex items-center gap-2"><code class="px-2 py-1 rounded text-sm" style="background:var(--bg)">${s.mapcode}</code><button onclick="copyMapCode('${s.mapcode}')" class="btn px-2 py-1 rounded text-xs" style="background:var(--bg)"><i class="fas fa-copy"></i></button></div></div></div>` : ''}
+</div>
+${s.address && s.address !== '-' ? `<div class="mt-4 flex gap-2"><a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}" target="_blank" class="btn px-4 py-2 rounded-lg text-white text-sm" style="background:var(--accent)"><i class="fas fa-map-marked-alt mr-2"></i>Google Maps</a><button onclick="toggleComplete('${s.id}')" class="btn px-4 py-2 rounded-lg text-sm" style="background:var(--bg);border:1px solid var(--border)"><i class="fas fa-check mr-2"></i>${completed[s.id] ? '已完成' : '標記完成'}</button></div>` : ''}
+<div class="mt-4"><button onclick="toggleNote('${s.id}')" class="text-sm" style="color:var(--accent)"><i class="fas fa-sticky-note mr-1"></i>我的筆記</button><div id="note-${s.id}" class="mt-2 hidden"><textarea onchange="saveNote('${s.id}',this.value)" class="w-full p-3 rounded-lg text-sm" style="background:var(--bg);border:1px solid var(--border)" rows="3" placeholder="在此輸入筆記...">${notes[s.id] || ''}</textarea></div></div>
+</div></div></div></div>`).join('')}
+</div></div>`;
+            document.getElementById('content').innerHTML = html;
+        }
+        function toggleTheme() { document.documentElement.classList.toggle('dark'); updateThemeIcon(); localStorage.setItem('theme', document.documentElement.classList.contains('dark') ? 'dark' : 'light'); }
+        function updateThemeIcon() { document.querySelector('#theme-btn i').className = document.documentElement.classList.contains('dark') ? 'fas fa-sun' : 'fas fa-moon'; }
+        function copyMapCode(code) { navigator.clipboard.writeText(code).then(() => { showToast('已複製 MapCode: ' + code); }).catch(() => { const el = document.createElement('textarea'); el.value = code; document.body.appendChild(el); el.select(); document.execCommand('copy'); document.body.removeChild(el); showToast('已複製 MapCode: ' + code); }); }
+        function showToast(msg) { const toast = document.getElementById('toast'); toast.textContent = msg; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+        function toggleComplete(id) { completed[id] = !completed[id]; localStorage.setItem('completed', JSON.stringify(completed)); renderDay(); }
+        function toggleNote(id) { document.getElementById('note-' + id).classList.toggle('hidden'); }
+        function saveNote(id, val) { notes[id] = val; localStorage.setItem('notes', JSON.stringify(notes)); }
+        function showGuides() { currentDay = 'guides'; renderTabs(); renderGuides(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function showSpotIndex() { currentDay = 'spotIndex'; renderTabs(); renderSpotIndex(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+        function getAllSpots() { return data.days.flatMap(day => day.spots.map(s => ({ ...s, dayTitle: day.title, date: day.date }))); }
+        function renderSpotCards(list) {
+            return list.map(s => `<div class="card rounded-2xl p-5 hover:shadow transition-all">
+<div class="flex flex-col md:flex-row md:items-start gap-4">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-2 flex-wrap text-sm">
+<span class="px-3 py-1 rounded-full" style="background:var(--bg);color:var(--text)">${s.dayTitle.split('｜')[0]}</span>
+<span class="px-2 py-1 rounded text-xs" style="background:var(--bg);color:var(--text-2)">${s.date.slice(5)}</span>
+${s.time ? `<span class="px-3 py-1 rounded-full text-xs font-medium" style="background:var(--bg);color:var(--text)"><i class="fas fa-clock mr-1"></i>${s.time}</span>` : ''}
+</div>
+<h3 class="text-xl font-semibold mb-2">${s.title}</h3>
+<p class="leading-relaxed" style="color:var(--text-2)">${s.description}</p>
+<div class="grid md:grid-cols-2 gap-3 text-sm mt-3">
+${s.city ? `<div class="flex items-start gap-2"><i class="fas fa-location-dot mt-1" style="color:var(--accent)"></i><div><div class="font-medium">地區</div><div style="color:var(--text-2)">${s.city}</div></div></div>` : ''}
+${s.address && s.address !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-map-marker-alt mt-1" style="color:var(--accent)"></i><div><div class="font-medium">地址</div><div style="color:var(--text-2)">${s.address}</div></div></div>` : ''}
+${s.openHours && s.openHours !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-clock mt-1" style="color:var(--accent)"></i><div><div class="font-medium">營業時間</div><div style="color:var(--text-2)">${s.openHours}</div></div></div>` : ''}
+${s.drive && s.drive !== '-' ? `<div class="flex items-start gap-2"><i class="fas fa-car mt-1" style="color:var(--accent)"></i><div><div class="font-medium">車程</div><div style="color:var(--text-2)">${s.drive}</div></div></div>` : ''}
+</div>
+</div>
+<div class="flex md:flex-col gap-2 items-start">
+<button onclick="goToSpot('${s.id}')" class="btn px-4 py-2 rounded-lg text-sm" style="background:var(--bg);border:1px solid var(--border)"><i class="fas fa-route mr-2"></i>查看行程</button>
+${s.address && s.address !== '-' ? `<a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(s.address)}" target="_blank" class="btn px-4 py-2 rounded-lg text-white text-sm" style="background:var(--accent)"><i class="fas fa-map-marked-alt mr-2"></i>Google Maps</a>` : ''}
+</div>
+</div>
+</div>`).join('') || '<div class="text-sm" style="color:var(--text-2)">找不到符合的景點，換個關鍵字試試。</div>';
+        }
+        function renderSpotIndex() {
+            const spots = getAllSpots();
+            window._spotIndexData = spots;
+            const html = `<div class="space-y-4">
+<div class="card rounded-2xl p-6">
+<h2 class="text-3xl font-bold mb-2 flex items-center"><i class="fas fa-magnifying-glass mr-3" style="color:var(--accent)"></i>景點速查</h2>
+<p class="mb-4" style="color:var(--text-2)">快速搜尋所有行程景點，可依名稱、城市或描述關鍵字查詢</p>
+<div class="flex items-center gap-3">
+<div class="flex-1 flex items-center gap-2 px-3 py-2 rounded-lg" style="background:var(--bg);border:1px solid var(--border)">
+<i class="fas fa-search" style="color:var(--text-2)"></i>
+<input id="spot-search" oninput="filterSpotIndex(this.value)" type="text" placeholder="輸入景點名稱 / 城市 / 描述關鍵字" class="w-full focus:outline-none text-sm" style="background:transparent;color:var(--text)">
+</div>
+</div>
+</div>
+<div id="spot-list" class="space-y-4">
+${renderSpotCards(spots)}
+</div>
+</div>`;
+            document.getElementById('content').innerHTML = html;
+        }
+        function filterSpotIndex(keyword = '') {
+            const normalized = keyword.trim().toLowerCase();
+            const source = window._spotIndexData || getAllSpots();
+            const filtered = normalized ? source.filter(s => (s.title || '').toLowerCase().includes(normalized) || (s.city || '').toLowerCase().includes(normalized) || (s.description || '').toLowerCase().includes(normalized) || (s.dayTitle || '').toLowerCase().includes(normalized)) : source;
+            const listEl = document.getElementById('spot-list');
+            if (listEl) listEl.innerHTML = renderSpotCards(filtered);
+        }
+        function goToSpot(id) {
+            const dayIdx = data.days.findIndex(d => d.spots.some(s => s.id === id));
+            if (dayIdx >= 0) {
+                currentDay = dayIdx;
+                renderTabs();
+                renderDay();
+                setTimeout(() => {
+                    const el = document.getElementById('spot-' + id);
+                    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 50);
+            }
+        }
+        function renderGuides() {
+            const html = `<div class="space-y-6">
+<div class="card rounded-2xl p-6">
+<h2 class="text-3xl font-bold mb-2"><i class="fas fa-book mr-3" style="color:var(--accent)"></i>景點介紹</h2>
+<p class="mb-4" style="color:var(--text-2)">精選六大必訪景點，包含詳細介紹、推薦亮點和實用建議</p>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+${data.guides.map(g => `<div class="card rounded-2xl p-6 hover:shadow-xl transition-all">
+<div class="flex items-start gap-4 mb-4">
+<div class="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl flex-shrink-0" style="background:${g.color}">
+<i class="fas ${g.icon}"></i>
+</div>
+<div class="flex-1">
+<h3 class="text-2xl font-bold mb-2">${g.title}</h3>
+<p class="leading-relaxed" style="color:var(--text-2)">${g.description}</p>
+</div>
+</div>
+<div class="mb-4">
+<div class="font-semibold mb-2 flex items-center"><i class="fas fa-star mr-2" style="color:#f59e0b"></i>推薦亮點</div>
+<div class="flex flex-wrap gap-2">
+${g.highlights.map(h => `<span class="px-3 py-1 rounded-full text-xs" style="background:var(--bg);color:var(--text)">${h}</span>`).join('')}
+</div>
+</div>
+<div class="mb-4 p-3 rounded-lg" style="background:var(--bg)">
+<div class="font-semibold mb-1 flex items-center text-sm"><i class="fas fa-lightbulb mr-2" style="color:#f59e0b"></i>實用建議</div>
+<p class="text-sm" style="color:var(--text-2)">${g.tips}</p>
+</div>
+<a href="${g.url}" target="_blank" class="btn px-6 py-3 rounded-lg text-white font-medium inline-flex items-center" style="background:${g.color}">
+<i class="fas fa-external-link-alt mr-2"></i>查看詳細介紹
+</a>
+</div>`).join('')}
+</div>
+</div>`;
+            document.getElementById('content').innerHTML = html;
+        }
+        init();
+    </script>
+</body>
+
+</html>
