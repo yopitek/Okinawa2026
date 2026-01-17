@@ -1,0 +1,1955 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>沖繩旅行手帖 | 2026 冬之旅</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Crimson+Text:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style>
+        /* ========== CSS Variables ========== */
+        :root {
+            /* Japanese-inspired Color Palette */
+            --ink-black: #1a1a1a;
+            --sumi-gray: #3d3d3d;
+            --washi-cream: #f5f3ed;
+            --indigo-blue: #2e4057;
+            --deep-indigo: #1b2735;
+            --vermillion: #d64545;
+            --burnt-orange: #e67e22;
+            --gold-accent: #d4af37;
+            --sage-green: #a8b5a0;
+            --sky-blue: #87b5d5;
+            --soft-pink: #f4d5d8;
+
+            /* Gradients */
+            --gradient-hero: linear-gradient(135deg, #1b2735 0%, #2e4057 50%, #3d5a73 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 246, 240, 0.9) 100%);
+            --gradient-accent: linear-gradient(90deg, #d64545 0%, #e67e22 100%);
+
+            /* Shadows */
+            --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.15);
+
+            /* Typography */
+            --font-display: 'Noto Serif TC', 'Crimson Text', serif;
+            --font-body: 'Noto Sans TC', sans-serif;
+            --font-accent: 'Libre Baskerville', serif;
+        }
+
+        /* ========== Base Styles ========== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--washi-cream);
+            color: var(--ink-black);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Washi Paper Texture */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px),
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0, 0, 0, 0.01) 2px, rgba(0, 0, 0, 0.01) 4px);
+            opacity: 0.4;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Noise Texture */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* ========== Hero Header ========== */
+        .hero {
+            position: relative;
+            background: var(--gradient-hero);
+            color: white;
+            padding: 80px 32px 120px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 3;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(circle at 20% 50%, rgba(214, 69, 69, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(135, 181, 213, 0.1) 0%, transparent 50%);
+            animation: heroGlow 8s ease-in-out infinite alternate;
+        }
+
+        @keyframes heroGlow {
+            0% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            100% {
+                opacity: 0.6;
+                transform: scale(1.1);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-subtitle {
+            font-family: var(--font-accent);
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.9;
+            margin-bottom: 32px;
+            animation: fadeInUp 0.8s ease-out 0.2s backwards;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-size: 0.95rem;
+            animation: fadeInUp 0.8s ease-out 0.4s backwards;
+        }
+
+        .hero-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-meta-item i {
+            font-size: 1.1rem;
+            color: var(--gold-accent);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ========== Navigation Tabs ========== */
+        .nav-wrapper {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(245, 243, 237, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: var(--shadow-md);
+            border-bottom: 2px solid var(--indigo-blue);
+        }
+
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            gap: 8px;
+            padding: 16px 24px;
+            max-width: 1400px;
+            margin: 0 auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--indigo-blue) transparent;
+        }
+
+        .nav-tabs::-webkit-scrollbar {
+            height: 4px;
+        }
+
+        .nav-tabs::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .nav-tabs::-webkit-scrollbar-thumb {
+            background: var(--indigo-blue);
+            border-radius: 2px;
+        }
+
+        .nav-tab {
+            flex-shrink: 0;
+            padding: 14px 24px;
+            background: white;
+            border: 2px solid var(--indigo-blue);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-family: var(--font-display);
+            font-weight: 600;
+            color: var(--indigo-blue);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-tab::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-accent);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-tab.active {
+            background: var(--indigo-blue);
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-tab.active::before {
+            left: 0;
+        }
+
+        .nav-tab-day {
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 2px;
+        }
+
+        .nav-tab-date {
+            font-size: 0.85rem;
+            font-family: var(--font-body);
+            font-weight: 400;
+            opacity: 0.8;
+        }
+
+        /* ========== Main Container ========== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 24px;
+            position: relative;
+            z-index: 3;
+        }
+
+        /* ========== Accommodation Banner ========== */
+        .accommodation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        .accommodation-card {
+            background: var(--gradient-card);
+            padding: 28px;
+            border-radius: 16px;
+            border-left: 4px solid var(--vermillion);
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .accommodation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(214, 69, 69, 0.1) 0%, transparent 70%);
+            transform: translate(30%, -30%);
+        }
+
+        .accommodation-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .accommodation-icon {
+            font-size: 2rem;
+            color: var(--vermillion);
+            margin-bottom: 12px;
+        }
+
+        .accommodation-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-indigo);
+            margin-bottom: 8px;
+        }
+
+        .accommodation-meta {
+            font-size: 0.9rem;
+            color: var(--sumi-gray);
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* ========== Day Section ========== */
+        .day-section {
+            margin-bottom: 80px;
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        .day-header {
+            margin-bottom: 48px;
+            padding-bottom: 24px;
+            border-bottom: 3px solid var(--indigo-blue);
+            position: relative;
+        }
+
+        .day-header::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 120px;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+
+        .day-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 900;
+            color: var(--deep-indigo);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .day-subtitle {
+            font-size: 1.1rem;
+            color: var(--sumi-gray);
+            font-style: italic;
+        }
+
+        /* ========== Timeline ========== */
+        .timeline {
+            position: relative;
+            padding-left: 60px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--indigo-blue) 0%, var(--sky-blue) 100%);
+        }
+
+        /* ========== Spot Card ========== */
+        .spot {
+            position: relative;
+            margin-bottom: 32px;
+            animation: spotAppear 0.5s ease-out backwards;
+        }
+
+        .spot:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .spot:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .spot:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .spot:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .spot:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        @keyframes spotAppear {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .spot-marker {
+            position: absolute;
+            left: -48px;
+            top: 8px;
+            width: 40px;
+            height: 40px;
+            background: white;
+            border: 3px solid var(--indigo-blue);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--indigo-blue);
+            box-shadow: var(--shadow-md);
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .spot:hover .spot-marker {
+            background: var(--indigo-blue);
+            color: white;
+            transform: scale(1.15);
+        }
+
+        .spot-card {
+            background: white;
+            border-radius: 16px;
+            padding: 28px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(46, 64, 87, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .spot-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 6px;
+            height: 100%;
+            background: var(--gradient-accent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .spot:hover .spot-card {
+            transform: translateX(8px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .spot:hover .spot-card::before {
+            opacity: 1;
+        }
+
+        .spot-time {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: var(--font-display);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--vermillion);
+            margin-bottom: 12px;
+        }
+
+        .spot-time i {
+            font-size: 1.3rem;
+        }
+
+        .spot-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--deep-indigo);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .spot-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 16px;
+            font-size: 0.9rem;
+        }
+
+        .spot-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--sumi-gray);
+        }
+
+        .spot-meta-item i {
+            color: var(--burnt-orange);
+        }
+
+        .spot-description {
+            color: var(--ink-black);
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .spot-address {
+            font-size: 0.9rem;
+            color: var(--sumi-gray);
+            margin-bottom: 16px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .spot-address i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--vermillion);
+        }
+
+        .spot-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+        }
+
+        .mapcode {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 16px;
+            background: linear-gradient(135deg, #fff4e6 0%, #ffe8cc 100%);
+            border: 2px solid var(--gold-accent);
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--ink-black);
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            font-family: var(--font-body);
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-copy {
+            background: var(--indigo-blue);
+            color: white;
+        }
+
+        .btn-copy:hover {
+            background: var(--deep-indigo);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-map {
+            background: var(--gradient-accent);
+            color: white;
+        }
+
+        .btn-map:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-nav {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+        }
+
+        .btn-nav:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        /* ========== Tips Section ========== */
+        .tips-section {
+            margin-top: 80px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(46, 64, 87, 0.03) 0%, rgba(135, 181, 213, 0.03) 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tips-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient-accent);
+        }
+
+        .tips-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .tips-title {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 900;
+            color: var(--deep-indigo);
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .tips-title i {
+            color: var(--gold-accent);
+            margin-right: 12px;
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .tip-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--vermillion);
+        }
+
+        .tip-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .tip-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+
+        .tip-title {
+            font-family: var(--font-display);
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--deep-indigo);
+            margin-bottom: 16px;
+        }
+
+        .tip-list {
+            list-style: none;
+        }
+
+        .tip-list li {
+            padding: 10px 0;
+            padding-left: 28px;
+            position: relative;
+            color: var(--ink-black);
+            line-height: 1.6;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .tip-list li:last-child {
+            border-bottom: none;
+        }
+
+        .tip-list li i {
+            position: absolute;
+            left: 0;
+            top: 12px;
+            font-size: 0.9rem;
+        }
+
+        /* ========== Guides Section ========== */
+        .guides-section {
+            margin-top: 40px;
+            padding: 60px 0;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.03) 0%, rgba(214, 69, 69, 0.03) 100%);
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guides-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #d4af37 0%, #d64545 100%);
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .guide-card {
+            background: white;
+            padding: 24px;
+            border-radius: 16px;
+            box-shadow: var(--shadow-md);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--gold-accent);
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            cursor: pointer;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-4px) translateX(4px);
+            box-shadow: var(--shadow-xl);
+            border-left-color: var(--vermillion);
+        }
+
+        .guide-icon {
+            font-size: 2.5rem;
+            margin-bottom: 12px;
+        }
+
+        .guide-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--deep-indigo);
+            margin-bottom: 8px;
+        }
+
+        .guide-desc {
+            font-size: 0.9rem;
+            color: var(--sumi-gray);
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .guide-link {
+            font-size: 0.8rem;
+            color: var(--vermillion);
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .guide-link i {
+            font-size: 0.7rem;
+        }
+
+        /* ========== Footer ========== */
+        .footer {
+            background: var(--deep-indigo);
+            color: white;
+            padding: 40px 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--gradient-accent);
+        }
+
+        .footer-content {
+            font-family: var(--font-accent);
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        .footer-content i {
+            color: var(--vermillion);
+            margin: 0 8px;
+        }
+
+        /* ========== Toast Notification ========== */
+        .toast {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            background: var(--deep-indigo);
+            color: white;
+            padding: 16px 24px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-xl);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease-out;
+            font-weight: 600;
+        }
+
+        .toast i {
+            font-size: 1.2rem;
+            color: var(--gold-accent);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(400px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        /* ========== Utilities ========== */
+        .hidden {
+            display: none !important;
+        }
+
+        /* ========== Responsive ========== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 20px 80px;
+            }
+
+            .hero-meta {
+                gap: 16px;
+            }
+
+            .timeline {
+                padding-left: 40px;
+            }
+
+            .timeline::before {
+                left: 12px;
+            }
+
+            .spot-marker {
+                left: -36px;
+                width: 32px;
+                height: 32px;
+                font-size: 0.8rem;
+            }
+
+            .spot-card {
+                padding: 20px;
+            }
+
+            .spot-time {
+                font-size: 1.4rem;
+            }
+
+            .spot-title {
+                font-size: 1.2rem;
+            }
+
+            .tips-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .toast {
+                bottom: 16px;
+                right: 16px;
+                left: 16px;
+            }
+        }
+
+        /* ========== Print Styles ========== */
+        @media print {
+
+            .nav-wrapper,
+            .btn,
+            .toast,
+            .hero-meta {
+                display: none !important;
+            }
+
+            body::before,
+            body::after {
+                display: none;
+            }
+
+            .spot-card {
+                break-inside: avoid;
+                box-shadow: none;
+                border: 1px solid #ccc;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">沖繩旅行手帖</h1>
+            <p class="hero-subtitle">A Winter Journey to Okinawa · 2026</p>
+            <div class="hero-meta">
+                <div class="hero-meta-item">
+                    <i class="fas fa-calendar-days"></i>
+                    <span>2026年1月28日 - 2月2日</span>
+                </div>
+                <div class="hero-meta-item">
+                    <i class="fas fa-clock"></i>
+                    <span>6天5夜</span>
+                </div>
+                <div class="hero-meta-item">
+                    <i class="fas fa-map-location-dot"></i>
+                    <span>沖繩本島</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="nav-wrapper">
+        <div class="nav-tabs" id="navTabs">
+            <!-- Generated by JavaScript -->
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="container">
+
+        <!-- Accommodation Info -->
+        <section class="accommodation">
+            <div class="accommodation-card">
+                <i class="fas fa-hotel accommodation-icon"></i>
+                <h3 class="accommodation-title">Vessel Hotel Campana Okinawa</h3>
+                <p class="accommodation-meta">1月28日 - 1月31日 · 含早餐</p>
+            </div>
+            <div class="accommodation-card">
+                <i class="fas fa-hot-tub accommodation-icon"></i>
+                <h3 class="accommodation-title">Okinawa Hinode Resort & Hot Spring</h3>
+                <p class="accommodation-meta">1月31日 - 2月2日 · 溫泉飯店</p>
+            </div>
+        </section>
+
+        <!-- Schedule Content -->
+        <div id="scheduleContent">
+            <!-- Generated by JavaScript -->
+        </div>
+
+        <!-- Tips Section -->
+        <section class="tips-section">
+            <div class="tips-container">
+                <h2 class="tips-title">
+                    <i class="fas fa-lightbulb"></i>
+                    旅行貼心提醒
+                </h2>
+                <div class="tips-grid">
+                    <div class="tip-card">
+                        <div class="tip-icon">🍽️</div>
+                        <h3 class="tip-title">餐廳預約建議</h3>
+                        <ul class="tip-list">
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>燒肉本部牧場：</strong>建議事先電話預約（熱門餐廳）</li>
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>七輪燒肉安安：</strong>假日建議提早到場或預約</li>
+                            <li><i class="fas fa-circle-check"
+                                    style="color: #10b981;"></i><strong>Gangala之谷：</strong>需事先官網預約導覽行程</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🚗</div>
+                        <h3 class="tip-title">開車注意事項</h3>
+                        <ul class="tip-list">
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>租車時確認兒童安全座椅（10歲、8歲各一）
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>沖繩高速公路需付費，建議租用ETC卡
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation" style="color: #d64545;"></i>加油站較少，建議油量低於半箱即加油
+                            </li>
+                            <li><i class="fas fa-triangle-exclamation"
+                                    style="color: #d64545;"></i><strong>日本靠左行駛</strong>，與台灣相反需注意</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🎫</div>
+                        <h3 class="tip-title">門票優惠資訊</h3>
+                        <ul class="tip-list">
+                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>美麗海水族館：</strong>建議線上預購門票享優惠
+                            </li>
+                            <li><i class="fas fa-tag"
+                                    style="color: #d4af37;"></i><strong>沖繩世界文化王國：</strong>套票含玉泉洞+王國村較划算</li>
+                            <li><i class="fas fa-tag" style="color: #d4af37;"></i><strong>Round 1：</strong>會員制，現場辦理即可
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="tip-card">
+                        <div class="tip-icon">🌤️</div>
+                        <h3 class="tip-title">天氣與穿著</h3>
+                        <ul class="tip-list">
+                            <li><i class="fas fa-temperature-low" style="color: #87b5d5;"></i>1-2月為沖繩冬季，氣溫約
+                                <strong>15-20°C</strong>
+                            </li>
+                            <li><i class="fas fa-shirt" style="color: #3d3d3d;"></i>早晚溫差大，需攜帶薄外套</li>
+                            <li><i class="fas fa-wind" style="color: #3d3d3d;"></i>海邊風大，建議帶防風外套</li>
+                            <li><i class="fas fa-umbrella" style="color: #87b5d5;"></i>下雨機率較高，建議備雨具和室內備案</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 景點攻略 Guide Section -->
+        <section class="guides-section" id="guidesSection">
+            <div class="tips-container">
+                <h2 class="tips-title">
+                    <i class="fas fa-book-open"></i>
+                    景點攻略
+                </h2>
+                <p style="text-align: center; color: var(--sumi-gray); margin-bottom: 32px;">點擊卡片即可開啟詳細介紹文章</p>
+                <div class="guides-grid">
+                    <a href="https://bobbyfun.tw/2024-01-08-2708/" target="_blank" class="guide-card">
+                        <div class="guide-icon">🛍️</div>
+                        <h3 class="guide-title">國際通</h3>
+                        <p class="guide-desc">沖繩最熱鬧的購物街，必吃美食、伴手禮攻略</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> bobbyfun.tw</span>
+                    </a>
+
+                    <a href="https://www.wendyjourney.com/okinawa-american-village/" target="_blank" class="guide-card">
+                        <div class="guide-icon">🎡</div>
+                        <h3 class="guide-title">美國村</h3>
+                        <p class="guide-desc">北谷町美式風情購物區，摩天輪夜景必拍</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> wendyjourney.com</span>
+                    </a>
+
+                    <a href="https://www.daydaytravel.hk/okinawa-family-travel-round-1-stadium/" target="_blank"
+                        class="guide-card">
+                        <div class="guide-icon">🎳</div>
+                        <h3 class="guide-title">Round 1 Stadium</h3>
+                        <p class="guide-desc">親子娛樂天堂，保齡球、卡拉OK、遊戲機一次滿足</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> daydaytravel.hk</span>
+                    </a>
+
+                    <a href="https://bobbyfun.tw/2024-01-07-2699/" target="_blank" class="guide-card">
+                        <div class="guide-icon">🛒</div>
+                        <h3 class="guide-title">AEON Mall 來客夢</h3>
+                        <p class="guide-desc">沖繩最大購物中心，美食街、兒童遊樂區完整攻略</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> bobbyfun.tw</span>
+                    </a>
+
+                    <a href="https://okinawa.letsgojp.com/archives/757370/" target="_blank" class="guide-card">
+                        <div class="guide-icon">🦇</div>
+                        <h3 class="guide-title">玉泉洞 + 沖繩世界</h3>
+                        <p class="guide-desc">東洋最大鐘乳石洞，琉球文化王國深度遊</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> letsgojp.com</span>
+                    </a>
+
+                    <a href="https://pfse64289.pixnet.net/blog/post/347028505" target="_blank" class="guide-card">
+                        <div class="guide-icon">🍜</div>
+                        <h3 class="guide-title">Nato屋</h3>
+                        <p class="guide-desc">沖繩在地人推薦美食，必訪餐廳心得分享</p>
+                        <span class="guide-link"><i class="fas fa-external-link-alt"></i> pixnet.net</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>願這趟旅程，成為珍藏的回憶 <i class="fas fa-heart"></i> 沖繩，我們來了</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // ========== Data ==========
+        const scheduleData = [
+            {
+                "date": "2026-01-28",
+                "day": "Day 1",
+                "title": "抵達日 - 那霸/北谷",
+                "spots": [
+                    {
+                        "time": "14:15",
+                        "title": "那霸機場",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市鏡水150",
+                        "mapcode": "33 187 359*27",
+                        "description": "抵達沖繩、入境、取行李",
+                        "openHours": "24小時",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "15:00",
+                        "title": "OTS租車（那霸機場店）",
+                        "city": "那霸",
+                        "address": "那霸機場內租車櫃台",
+                        "mapcode": "33 187 359*27",
+                        "description": "辦理租車手續、確認保險及兒童座椅",
+                        "openHours": "8:00-20:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "15:45",
+                        "title": "國際通",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市牧志3-2-10",
+                        "mapcode": "33 157 264*05",
+                        "description": "沖繩最熱鬧商店街、採購伴手禮、逛街",
+                        "openHours": "店家約10:00-22:00",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "Calbee Plus 國際通店",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市牧志3-2-2",
+                        "mapcode": "33 157 382*65",
+                        "description": "現做熱呼呼洋芋片、小孩最愛",
+                        "openHours": "10:00-21:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "17:30",
+                        "title": "Vessel Hotel Campana Okinawa",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜34-2",
+                        "mapcode": "33 525 223*17",
+                        "description": "Check-in、放置行李、休息",
+                        "openHours": "Check-in 14:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：暖暮拉麵（美濱店）",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜2-4-5",
+                        "mapcode": "33 526 450*56",
+                        "description": "沖繩超人氣拉麵、濃郁豚骨湯頭",
+                        "openHours": "11:00-翌2:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "19:30",
+                        "title": "美國村散步",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜",
+                        "mapcode": "33 526 450*63",
+                        "description": "摩天輪夜景、商店街閒逛",
+                        "openHours": "店家至21:00-22:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "21:00",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "第一天早點休息調整時差",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-29",
+                "day": "Day 2",
+                "title": "美麗海水族館 - 本部町一日遊",
+                "spots": [
+                    {
+                        "time": "7:30",
+                        "title": "飯店早餐",
+                        "city": "北谷",
+                        "address": "Vessel Hotel內",
+                        "mapcode": "-",
+                        "description": "飯店提供豐盛自助早餐",
+                        "openHours": "6:30-10:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "8:30",
+                        "title": "出發前往本部町",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "沿西海岸線風景優美",
+                        "openHours": "-",
+                        "drive": "90分鐘"
+                    },
+                    {
+                        "time": "10:00",
+                        "title": "沖繩美麗海水族館",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町石川424",
+                        "mapcode": "553 075 797*74",
+                        "description": "黑潮之海大水槽、鯨鯊、海豚表演、海龜館（建議停留3-4小時）",
+                        "openHours": "8:30-18:30（10-2月至17:30）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "13:30",
+                        "title": "午餐：岸本食堂",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町渡久地5",
+                        "mapcode": "206 888 617*37",
+                        "description": "本部超人氣沖繩麵老店、在地人推薦",
+                        "openHours": "11:00-17:30（週三休）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "15:00",
+                        "title": "備瀨福木林道",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町備瀬",
+                        "mapcode": "553 105 685*44",
+                        "description": "綠色隧道散步、可租腳踏車遊覽（1-1.5小時）",
+                        "openHours": "24小時開放",
+                        "drive": "2分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "備瀨崎海岸",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町備瀬",
+                        "mapcode": "553 106 072*87",
+                        "description": "海岸秘境、看夕陽、礁岩潮池探險",
+                        "openHours": "24小時開放",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "17:30",
+                        "title": "晚餐：燒肉本部牧場 本部店",
+                        "city": "本部",
+                        "address": "沖縄県国頭郡本部町大浜850-3",
+                        "mapcode": "206 888 493*33",
+                        "description": "沖繩頂級燒肉、自家牧場直送、兒童友善",
+                        "openHours": "11:00-22:00（L.O. 21:00）",
+                        "drive": "90分鐘"
+                    },
+                    {
+                        "time": "20:00",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "結束充實的一天",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-30",
+                "day": "Day 3",
+                "title": "宜野灣 - 購物娛樂日",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店早餐",
+                        "city": "北谷",
+                        "address": "Vessel Hotel內",
+                        "mapcode": "-",
+                        "description": "飯店自助早餐",
+                        "openHours": "6:30-10:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:00",
+                        "title": "出發前往宜野灣",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "-",
+                        "openHours": "-",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "宜野灣Round 1 Stadium",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市大山7-6-1",
+                        "mapcode": "33 343 103*15",
+                        "description": "保齡球、卡拉OK、遊戲機、運動娛樂複合設施（2.5-3小時）",
+                        "openHours": "平日10:00-翌6:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "12:30",
+                        "title": "午餐：琉球新麵 通堂 宜野灣店",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市宇地泊558-7",
+                        "mapcode": "33 341 266*35",
+                        "description": "超人氣沖繩麵、男人麵vs女人麵",
+                        "openHours": "11:00-翌1:00",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "14:00",
+                        "title": "宜野灣海濱公園",
+                        "city": "宜野灣",
+                        "address": "沖縄県宜野湾市真志喜4-2-1",
+                        "mapcode": "33 374 652*66",
+                        "description": "大型溜滑梯、草地奔跑、海景步道",
+                        "openHours": "24小時開放",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "15:30",
+                        "title": "永旺夢樂城沖繩來客夢（AEON Mall）",
+                        "city": "北中城",
+                        "address": "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区",
+                        "mapcode": "33 530 406*60",
+                        "description": "沖繩最大購物中心、兒童遊樂區、逛街購物（2-2.5小時）",
+                        "openHours": "10:00-22:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：目利きの銀次 北谷店",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜9-21 Deport Island 2F",
+                        "mapcode": "33 525 504*71",
+                        "description": "日式居酒屋、新鮮海鮮、兒童友善",
+                        "openHours": "17:00-24:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "20:30",
+                        "title": "回飯店休息",
+                        "city": "北谷",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "-",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-01-31",
+                "day": "Day 4",
+                "title": "北谷 + 換飯店日 - 恩納村",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店早餐 + Check-out",
+                        "city": "北谷",
+                        "address": "Vessel Hotel",
+                        "mapcode": "-",
+                        "description": "享用最後一次飯店早餐、整理行李、退房",
+                        "openHours": "Check-out 11:00",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "桃原公園",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町桃原3-17",
+                        "mapcode": "33 584 852*37",
+                        "description": "超長溜滑梯、小孩放電天堂（1.5小時）",
+                        "openHours": "24小時開放",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "11:30",
+                        "title": "日落海灘",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜2",
+                        "mapcode": "33 525 390*66",
+                        "description": "白沙海灘、玩水踏浪、海濱散步",
+                        "openHours": "24小時開放",
+                        "drive": "3分鐘"
+                    },
+                    {
+                        "time": "12:30",
+                        "title": "午餐：七輪燒肉安安 北谷店",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町美浜9-21 Deport Island 1F",
+                        "mapcode": "33 526 336*63",
+                        "description": "平價燒肉吃到飽、CP值高",
+                        "openHours": "11:30-23:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "15:30",
+                        "title": "萬座毛",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村恩納",
+                        "mapcode": "206 312 039*17",
+                        "description": "象鼻岩奇景、絕美海景懸崖（40分鐘）",
+                        "openHours": "8:00-18:00（10-3月至17:00）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "16:30",
+                        "title": "Zhyvago Coffee Works",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村瀬良垣1288",
+                        "mapcode": "206 221 357*00",
+                        "description": "絕美海景咖啡廳、下午茶時光",
+                        "openHours": "10:00-19:00",
+                        "drive": "15分鐘"
+                    },
+                    {
+                        "time": "18:00",
+                        "title": "Okinawa Hinode Resort and Hot Spring Hotel",
+                        "city": "恩納",
+                        "address": "沖縄県国頭郡恩納村冨着志利福地原246-1",
+                        "mapcode": "206 005 657*43",
+                        "description": "Check-in、享受溫泉飯店設施",
+                        "openHours": "Check-in 15:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "19:00",
+                        "title": "晚餐：グルメ回轉壽司市場 美兵",
+                        "city": "沖繩市",
+                        "address": "沖縄県沖縄市美原1-9-21",
+                        "mapcode": "33 740 662*65",
+                        "description": "高品質迴轉壽司（或改飯店內用餐）",
+                        "openHours": "11:00-22:00",
+                        "drive": "30分鐘"
+                    },
+                    {
+                        "time": "21:00",
+                        "title": "回飯店、泡溫泉",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "享受溫泉放鬆",
+                        "openHours": "溫泉至23:00",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-02-01",
+                "day": "Day 5",
+                "title": "南部巡禮 - 玉泉洞王國村",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "飯店附近早餐",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "飯店無早餐，建議便利商店或附近餐廳",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "9:00",
+                        "title": "出發前往南部",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "經由高速公路前往南城市",
+                        "openHours": "-",
+                        "drive": "55分鐘"
+                    },
+                    {
+                        "time": "10:00",
+                        "title": "沖繩世界文化王國 + 玉泉洞",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城前川1336",
+                        "mapcode": "232 495 248*28",
+                        "description": "東洋最大鐘乳石洞、毒蛇博物館、EISA太鼓秀、琉球傳統村落體驗（3小時）",
+                        "openHours": "9:00-17:30（最終入場17:00）",
+                        "drive": "園區內"
+                    },
+                    {
+                        "time": "13:00",
+                        "title": "午餐：園區內餐廳 或 Gangala之谷",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城前川202",
+                        "mapcode": "232 494 728*62",
+                        "description": "鐘乳石洞穴咖啡廳（Gangala需事先預約導覽）",
+                        "openHours": "Gangala 10:00-18:00",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "14:30",
+                        "title": "新原海灘（ミーバルビーチ）",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城百名1599-6",
+                        "mapcode": "232 469 581*17",
+                        "description": "玻璃底船看熱帶魚、淺灘戲水、撿貝殼（1小時）",
+                        "openHours": "9:00-18:00（冬季至17:00）",
+                        "drive": "8分鐘"
+                    },
+                    {
+                        "time": "16:00",
+                        "title": "奧武島（おうじま）",
+                        "city": "南城",
+                        "address": "沖縄県南城市玉城奥武",
+                        "mapcode": "232 469 609*22",
+                        "description": "天婦羅小吃（中本鮮魚天婦羅店）、貓島、跨海小橋散步",
+                        "openHours": "天婦羅店約10:00-18:00",
+                        "drive": "5分鐘"
+                    },
+                    {
+                        "time": "17:00",
+                        "title": "知念岬公園",
+                        "city": "南城",
+                        "address": "沖縄県南城市知念久手堅",
+                        "mapcode": "232 594 503*22",
+                        "description": "絕美夕陽海景、眺望久高島、免費景點",
+                        "openHours": "24小時開放",
+                        "drive": "55分鐘"
+                    },
+                    {
+                        "time": "18:30",
+                        "title": "晚餐：飯店內或恩納村周邊",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "建議飯店內用餐或恩納村餐廳",
+                        "openHours": "-",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "20:00",
+                        "title": "回飯店休息",
+                        "city": "恩納",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "泡溫泉放鬆",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            },
+            {
+                "date": "2026-02-02",
+                "day": "Day 6",
+                "title": "回程日",
+                "spots": [
+                    {
+                        "time": "8:00",
+                        "title": "Check-out",
+                        "city": "恩納",
+                        "address": "Hinode Resort",
+                        "mapcode": "-",
+                        "description": "整理行李、退房",
+                        "openHours": "Check-out 10:00",
+                        "drive": "50分鐘"
+                    },
+                    {
+                        "time": "9:30",
+                        "title": "早餐：C&C Breakfast Okinawa",
+                        "city": "北谷",
+                        "address": "沖縄県中頭郡北谷町宮城2-99",
+                        "mapcode": "33 584 520*06",
+                        "description": "美式早午餐、夏威夷風格Pancake",
+                        "openHours": "7:00-17:00（L.O. 16:00）",
+                        "drive": "10分鐘"
+                    },
+                    {
+                        "time": "11:00",
+                        "title": "AEON Mall 購物 + 午餐",
+                        "city": "北中城",
+                        "address": "沖縄県中頭郡北中城村アワセ土地区画整理事業区域内4街区",
+                        "mapcode": "33 530 406*60",
+                        "description": "最後採購伴手禮、美食街用餐、退稅",
+                        "openHours": "10:00-22:00",
+                        "drive": "25分鐘"
+                    },
+                    {
+                        "time": "13:00",
+                        "title": "前往那霸機場",
+                        "city": "那霸",
+                        "address": "沖縄県那覇市鏡水150",
+                        "mapcode": "33 187 359*27",
+                        "description": "還車、辦理登機手續、安檢",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "15:25",
+                        "title": "那霸機場起飛",
+                        "city": "那霸",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "返回台灣",
+                        "openHours": "-",
+                        "drive": "-"
+                    },
+                    {
+                        "time": "16:10",
+                        "title": "抵達台北（台灣時間）",
+                        "city": "台北",
+                        "address": "-",
+                        "mapcode": "-",
+                        "description": "回到溫暖的家",
+                        "openHours": "-",
+                        "drive": "-"
+                    }
+                ]
+            }
+        ];
+
+        // ========== State ==========
+        let currentDayIndex = 0;
+
+        // ========== Initialization ==========
+        document.addEventListener('DOMContentLoaded', () => {
+            renderNavTabs();
+            renderSchedule(currentDayIndex);
+        });
+
+        // ========== Render Functions ==========
+        function renderNavTabs() {
+            const navTabs = document.getElementById('navTabs');
+
+            scheduleData.forEach((day, index) => {
+                const tab = document.createElement('div');
+                tab.className = `nav-tab ${index === currentDayIndex ? 'active' : ''}`;
+                tab.innerHTML = `
+                    <div class="nav-tab-day">${day.day}</div>
+                    <div class="nav-tab-date">${formatDate(day.date)}</div>
+                `;
+                tab.onclick = () => switchDay(index);
+                navTabs.appendChild(tab);
+            });
+        }
+
+        function renderSchedule(dayIndex) {
+            const day = scheduleData[dayIndex];
+            const content = document.getElementById('scheduleContent');
+
+            content.innerHTML = `
+                <section class="day-section">
+                    <header class="day-header">
+                        <h2 class="day-title">${day.day}｜${day.title}</h2>
+                        <p class="day-subtitle">${formatDate(day.date)}</p>
+                    </header>
+
+                    <div class="timeline">
+                        ${day.spots.map((spot, index) => renderSpot(spot, index + 1)).join('')}
+                    </div>
+                </section>
+            `;
+        }
+
+        function renderSpot(spot, index) {
+            const hasMapCode = spot.mapcode && spot.mapcode !== '-';
+            const hasAddress = spot.address && spot.address !== '-';
+
+            return `
+                <article class="spot">
+                    <div class="spot-marker">${index}</div>
+                    <div class="spot-card">
+                        <div class="spot-time">
+                            <i class="fas fa-clock"></i>
+                            ${spot.time}
+                        </div>
+
+                        <h3 class="spot-title">${spot.title}</h3>
+
+                        <div class="spot-meta">
+                            ${spot.city !== '-' ? `
+                                <div class="spot-meta-item">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    <span>${spot.city}</span>
+                                </div>
+                            ` : ''}
+
+                            ${spot.openHours !== '-' ? `
+                                <div class="spot-meta-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span>${spot.openHours}</span>
+                                </div>
+                            ` : ''}
+
+                            ${spot.drive !== '-' ? `
+                                <div class="spot-meta-item">
+                                    <i class="fas fa-car"></i>
+                                    <span>${spot.drive}</span>
+                                </div>
+                            ` : ''}
+                        </div>
+
+                        ${spot.description !== '-' ? `
+                            <p class="spot-description">${spot.description}</p>
+                        ` : ''}
+
+                        ${hasAddress ? `
+                            <div class="spot-address">
+                                <i class="fas fa-location-dot"></i>
+                                ${spot.address}
+                            </div>
+                        ` : ''}
+
+                        ${hasMapCode ? `
+                            <div class="spot-actions">
+                                <div class="mapcode">
+                                    <i class="fas fa-map-pin"></i>
+                                    <span>${spot.mapcode}</span>
+                                </div>
+                                <button class="btn btn-copy" onclick="copyMapCode('${spot.mapcode}')">
+                                    <i class="fas fa-copy"></i>
+                                    複製
+                                </button>
+                                <button class="btn btn-map" onclick="openMap('${spot.mapcode}', '${escapeQuotes(spot.title)}')">
+                                    <i class="fas fa-map-marked-alt"></i>
+                                    地圖
+                                </button>
+                                <button class="btn btn-nav" onclick="startNavigation('${escapeQuotes(spot.address)}', '${escapeQuotes(spot.title)}')">
+                                    <i class="fas fa-route"></i>
+                                    導航
+                                </button>
+                            </div>
+                        ` : ''}
+                    </div>
+                </article>
+            `;
+        }
+
+        // ========== Utility Functions ==========
+        function switchDay(index) {
+            currentDayIndex = index;
+
+            // Update tabs
+            const tabs = document.querySelectorAll('.nav-tab');
+            tabs.forEach((tab, i) => {
+                tab.classList.toggle('active', i === index);
+            });
+
+            // Render new schedule
+            renderSchedule(index);
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const days = ['日', '一', '二', '三', '四', '五', '六'];
+            const month = date.getMonth() + 1;
+            const day = date.getDate();
+            const weekday = days[date.getDay()];
+            return `${month}月${day}日（週${weekday}）`;
+        }
+
+        function copyMapCode(mapcode) {
+            navigator.clipboard.writeText(mapcode).then(() => {
+                showToast('MapCode 已複製到剪貼簿');
+            }).catch(() => {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = mapcode;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                showToast('MapCode 已複製到剪貼簿');
+            });
+        }
+
+        function openMap(mapcode, title) {
+            // Get current spot data to access address
+            const day = scheduleData[currentDayIndex];
+            const spot = day.spots.find(s => s.mapcode === mapcode || s.title === title);
+
+            // Prefer address for more accurate navigation in Japan
+            let query;
+            if (spot && spot.address && spot.address !== '-') {
+                query = spot.address;
+            } else {
+                query = `${title} 沖縄`;
+            }
+
+            const encodedQuery = encodeURIComponent(query);
+
+            // Detect if mobile device
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                // Use geo: URI scheme for native maps app (works with Google Maps, Apple Maps)
+                // This opens the maps app directly for navigation
+                const geoUrl = `geo:0,0?q=${encodedQuery}`;
+                const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodedQuery}`;
+
+                // Try geo protocol first, fallback to Google Maps URL
+                const link = document.createElement('a');
+                link.href = geoUrl;
+                link.click();
+
+                // Fallback after small delay if geo: doesn't work
+                setTimeout(() => {
+                    window.location.href = googleMapsUrl;
+                }, 500);
+            } else {
+                // Desktop: open in new tab
+                window.open(`https://www.google.com/maps/search/?api=1&query=${encodedQuery}`, '_blank');
+            }
+        }
+
+        function startNavigation(address, title) {
+            // Use address for accurate navigation, fallback to title
+            let destination;
+            if (address && address !== '-' && address !== 'undefined') {
+                destination = address;
+            } else {
+                destination = `${title} 沖縄`;
+            }
+
+            const encodedDest = encodeURIComponent(destination);
+
+            // Google Maps navigation URL with driving mode
+            // This will open Google Maps and start navigation
+            const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+            const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+            if (isMobile) {
+                if (isIOS) {
+                    // iOS: use comgooglemaps:// URL scheme for Google Maps app
+                    // Falls back to web if app not installed
+                    const googleMapsAppUrl = `comgooglemaps://?daddr=${encodedDest}&directionsmode=driving`;
+                    const webFallback = `https://www.google.com/maps/dir/?api=1&destination=${encodedDest}&travelmode=driving`;
+
+                    // Try app first
+                    window.location.href = googleMapsAppUrl;
+
+                    // Fallback to web after short delay
+                    setTimeout(() => {
+                        window.location.href = webFallback;
+                    }, 1000);
+                } else {
+                    // Android: use google.navigation intent
+                    const androidNavUrl = `google.navigation:q=${encodedDest}&mode=d`;
+                    const webFallback = `https://www.google.com/maps/dir/?api=1&destination=${encodedDest}&travelmode=driving`;
+
+                    // Try intent first
+                    window.location.href = androidNavUrl;
+
+                    // Fallback to web
+                    setTimeout(() => {
+                        window.location.href = webFallback;
+                    }, 1000);
+                }
+            } else {
+                // Desktop: open directions in new tab
+                window.open(`https://www.google.com/maps/dir/?api=1&destination=${encodedDest}&travelmode=driving`, '_blank');
+            }
+
+            showToast('正在開啟 Google Maps 導航...');
+        }
+
+        function showToast(message) {
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.innerHTML = `
+                <i class="fas fa-check-circle"></i>
+                <span>${message}</span>
+            `;
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideIn 0.3s ease-out reverse';
+                setTimeout(() => toast.remove(), 300);
+            }, 2500);
+        }
+
+        function escapeQuotes(str) {
+            return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+        }
+
+        // ========== Keyboard Navigation ==========
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentDayIndex > 0) {
+                switchDay(currentDayIndex - 1);
+            } else if (e.key === 'ArrowRight' && currentDayIndex < scheduleData.length - 1) {
+                switchDay(currentDayIndex + 1);
+            }
+        });
+    </script>
+</body>
+
+</html>
